@@ -1,0 +1,56 @@
+{
+    "cartas": [
+      {
+        "id": 1,
+        "title": "Cáncer en Gatos",
+        "description": "Información importante sobre carcinoma en gatos.",
+        "sections": [
+          {
+            "title": "¿Qué es el CCEO?",
+            "content": "El carcinoma de células escamosas oral (CCEO) es un tipo de cáncer agresivo que afecta principalmente a los gatos mayores.",
+            "image": "assets/images/cancer1.jpg"
+          },
+          {
+            "title": "Factores de Riesgo",
+            "content": "Exposición al sol, falta de pigmentación, escaso pelaje, entre otros.",
+            "image": "assets/images/cancer2.jpg"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Cálculos Renales",
+        "description": "Información detallada sobre cálculos renales en gatos.",
+        "sections": [
+          {
+            "title": "¿Qué son los cálculos renales?",
+            "content": "Los cálculos renales son acumulaciones sólidas de minerales que pueden formarse en los riñones.",
+            "image": "assets/images/calculos1.jpg"
+          },
+          {
+            "title": "Factores de Riesgo",
+            "content": "Dieta seca exclusiva, problemas metabólicos, ser macho castrado.",
+            "image": "assets/images/calculos2.jpg"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Carta 3",
+        "description": "Contenido detallado de la carta 3.",
+        "sections": [
+          {
+            "title": "Sección 1",
+            "content": "Contenido de la sección 1...",
+            "image": "assets/images/carta3_1.jpg"
+          },
+          {
+            "title": "Sección 2",
+            "content": "Contenido de la sección 2...",
+            "image": "assets/images/carta3_2.jpg"
+          }
+        ]
+      }
+    ]
+  }
+  

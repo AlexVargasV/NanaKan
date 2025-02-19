@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/language_provider.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Function(String) onSearch;
@@ -20,53 +22,54 @@ class _CustomAppBarState extends State<CustomAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.blue.shade300, Colors.purple.shade300],
+          colors: [Colors.blue.shade400, Colors.purple.shade400],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
-            blurRadius: 10,
-            offset: Offset(0, 4),
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 6,
+            offset: Offset(0, 3),
           ),
         ],
       ),
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Ícono del menú
-              GestureDetector(
-                onTap: () => Scaffold.of(context).openDrawer(),
-                child: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.3),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.menu,
-                    color: Colors.white,
-                    size: 28,
+              // 🔹 Menú desplegable (Usamos Builder para evitar problemas de contexto)
+              Builder(
+                builder: (context) => GestureDetector(
+                  onTap: () => Scaffold.of(context).openDrawer(),
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.2),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(Icons.menu, color: Colors.white, size: 28),
                   ),
                 ),
               ),
 
-              // Campo de búsqueda o título
+              // 🔹 Campo de búsqueda o título
               isSearching
                   ? Expanded(
                       child: TextField(
                         controller: searchController,
                         autofocus: true,
+                        cursorColor: Colors.white,
                         style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
-                          hintText: "Buscar...",
+                          hintText: languageProvider.translate("search"),
                           hintStyle: TextStyle(color: Colors.white70),
                           border: InputBorder.none,
                         ),
@@ -82,14 +85,14 @@ class _CustomAppBarState extends State<CustomAppBar> {
                         shadows: [
                           Shadow(
                             color: Colors.black.withOpacity(0.2),
-                            blurRadius: 8,
+                            blurRadius: 6,
                             offset: Offset(2, 2),
                           ),
                         ],
                       ),
                     ),
 
-              // Botón de búsqueda o cerrar búsqueda
+              // 🔹 Botón de búsqueda o cerrar búsqueda
               GestureDetector(
                 onTap: () {
                   setState(() {
@@ -100,10 +103,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     }
                   });
                 },
-                child: Container(
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 300),
                   padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.3),
+                    color: Colors.white.withOpacity(0.2),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
@@ -113,6 +117,45 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   ),
                 ),
               ),
+
+              // 🔹 Selector de idioma con menú desplegable
+              PopupMenuButton<String>(
+                onSelected: (String newLang) {
+                  Provider.of<LanguageProvider>(context, listen: false)
+                      .changeLanguage(newLang);
+                },
+                icon: Icon(Icons.language, color: Colors.white, size: 28),
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                itemBuilder: (BuildContext context) => [
+                  PopupMenuItem(
+                    value: 'es',
+                    child: Row(
+                      children: [
+                        Icon(Icons.flag, color: Colors.red),
+                        SizedBox(width: 8),
+                        Text("Español"),
+                        if (languageProvider.locale.languageCode == 'es')
+                          Icon(Icons.check, color: Colors.green),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 'en',
+                    child: Row(
+                      children: [
+                        Icon(Icons.flag, color: Colors.blue),
+                        SizedBox(width: 8),
+                        Text("English"),
+                        if (languageProvider.locale.languageCode == 'en')
+                          Icon(Icons.check, color: Colors.green),
+                      ],
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),

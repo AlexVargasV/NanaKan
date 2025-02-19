@@ -17,21 +17,32 @@ class AnimatedCard extends StatelessWidget {
   }) : super(key: key);
 
   void _navigateToDetail(BuildContext context) {
+    // 🔹 Normalizamos el título quitando caracteres especiales y espacios extra
+    String normalizedTitle = title
+        .toLowerCase()
+        .replaceAll(RegExp(r'[^a-záéíóúüñ\s]'), '') // 🔹 Elimina símbolos
+        .trim();
+
+    print("🔍 Navegando a: $normalizedTitle"); // 🔹 Depuración
+
+    Widget nextPage;
+    switch (normalizedTitle) {
+      case "cáncer en gatos":
+        nextPage = CarcinomaInfoPage();
+        break;
+      case "cálculos renales":
+        nextPage = CalculosInfoPage();
+        break;
+      case "enfermedades dentales":
+        nextPage = DentalesInfoPage();
+        break;
+      default:
+        nextPage = DetailPage();
+    }
+
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (_) {
-          if (title.trim().toLowerCase() == "cáncer en gatos") {
-            return CarcinomaInfoPage();
-          } else if (title.trim().toLowerCase() == "cálculos renales") {
-            return CalculosInfoPage();
-          } else if (title.trim().toLowerCase() == "enfermedades dentales") {
-            return DentalesInfoPage();
-          } else {
-            return DetailPage();
-          }
-        },
-      ),
+      MaterialPageRoute(builder: (_) => nextPage),
     );
   }
 
@@ -57,17 +68,11 @@ class AnimatedCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-              child: ClipRect(
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  heightFactor: 0.85, // 🔹 Recorta un 15% de la parte superior
-                  child: Image.asset(
-                    imageAsset,
-                    height: 200, // 🔹 Mantiene altura fija
-                    width: double.infinity,
-                    fit: BoxFit.cover, // 🔹 Llena el espacio sin distorsionar
-                  ),
-                ),
+              child: Image.asset(
+                imageAsset,
+                height: 200,
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
             ),
             Padding(

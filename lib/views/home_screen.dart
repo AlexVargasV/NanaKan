@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_app_bar.dart'; // AppBar personalizado
-import '../widgets/animated_card.dart'; // Tarjetas animadas
+import 'package:provider/provider.dart';
+import '../providers/language_provider.dart';
+import '../widgets/custom_app_bar.dart';
+import '../widgets/animated_card.dart';
 import 'configuracion_page.dart';
 import 'dedicatoria_page.dart';
 
@@ -10,51 +12,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<String> titles = [
-    "Cáncer en Gatos",
-    "Cálculos En Los Riñones",
-    "Carta 3"
-  ];
-  final List<String> descriptions = [
-    "Información importante sobre carcinoma en gatos.",
-    "Información detallada sobre cálculos renales en gatos.",
-    "Contenido detallado de la carta 3."
-  ];
-  final List<String> assetImages = [
-    'assets/images/1.webp',
-    'assets/images/2.webp',
-    'assets/images/3.webp',
-  ];
-  final List<Map<String, String>> allCards = [
-    {
-      "title": "Cáncer en Gatos",
-      "description": "Carcinoma de células escamosas.",
-      "image": 'assets/images/1.webp'
-    },
-    {
-      "title": "Cálculos Renales",
-      "description": "Cómo afectan a los gatos.",
-      "image": 'assets/images/2.webp'
-    },
-    {
-      "title": "Enfermedades Dentales",
-      "description": "Placa y gingivitis felina.",
-      "image": 'assets/images/3.webp'
-    },
-  ];
-
   List<Map<String, String>> filteredCards = [];
 
   @override
-  void initState() {
-    super.initState();
-    filteredCards = List.from(allCards);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final languageProvider = Provider.of<LanguageProvider>(context);
+    setState(() {
+      filteredCards = languageProvider.getTranslatedCards();
+    });
   }
 
   void filterCards(String query) {
+    final languageProvider =
+        Provider.of<LanguageProvider>(context, listen: false);
+    List<Map<String, String>> allCards = languageProvider.getTranslatedCards();
+
     setState(() {
       filteredCards = query.isEmpty
-          ? List.from(allCards)
+          ? allCards
           : allCards
               .where((card) =>
                   card["title"]!.toLowerCase().contains(query.toLowerCase()) ||
@@ -72,27 +48,21 @@ class _HomeScreenState extends State<HomeScreen> {
       _currentIndex = index;
     });
 
-    if (index == 0) {
-      // Pantalla actual: Inicio
-    } else if (index == 1) {
+    if (index == 1) {
       Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => DedicatoriaPage()),
-      );
+          context, MaterialPageRoute(builder: (context) => DedicatoriaPage()));
     } else if (index == 2) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ConfiguracionPage()),
-      );
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => ConfiguracionPage()));
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
+
     return Scaffold(
-      appBar: CustomAppBar(
-        onSearch: filterCards, // ✅ Pasamos la función de búsqueda
-      ), // AppBar personalizado
+      appBar: CustomAppBar(onSearch: filterCards),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -106,39 +76,38 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               child: Text(
-                'Menú',
+                languageProvider.translate("menu"), // ✅ Traducido dinámicamente
                 style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               ),
             ),
             ListTile(
               leading: Icon(Icons.home, color: Colors.blue),
-              title: Text('Inicio'),
+              title: Text(languageProvider.translate("home")), // ✅ Traducido
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
               leading: Icon(Icons.favorite, color: Colors.red),
-              title: Text('Dedicatoria'),
+              title: Text(
+                  languageProvider.translate("dedicatoria")), // ✅ Traducido
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DedicatoriaPage()),
-                );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DedicatoriaPage()));
               },
             ),
             ListTile(
               leading: Icon(Icons.settings, color: Colors.grey),
-              title: Text('Configuración'),
+              title: Text(
+                  languageProvider.translate("configuracion")), // ✅ Traducido
               onTap: () {
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ConfiguracionPage()),
-                );
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ConfiguracionPage()));
               },
             ),
           ],
@@ -146,11 +115,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16.0),
-        itemCount: filteredCards.length, // ✅ Usamos la lista filtrada
+        itemCount: filteredCards.length,
         itemBuilder: (context, index) {
           return AnimatedCard(
-            title: filteredCards[index]
-                ["title"]!, // ✅ Usamos los datos filtrados
+            title: filteredCards[index]["title"]!,
             description: filteredCards[index]["description"]!,
             imageAsset: filteredCards[index]["image"]!,
           );
@@ -163,17 +131,15 @@ class _HomeScreenState extends State<HomeScreen> {
         unselectedItemColor: Colors.grey,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Inicio",
-          ),
+              icon: Icon(Icons.home),
+              label: languageProvider.translate("home")), // ✅ Traducido
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: "Dedicatoria",
-          ),
+              icon: Icon(Icons.favorite),
+              label: languageProvider.translate("dedicatoria")), // ✅ Traducido
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: "Configuración",
-          ),
+              icon: Icon(Icons.settings),
+              label:
+                  languageProvider.translate("configuracion")), // ✅ Traducido
         ],
       ),
     );

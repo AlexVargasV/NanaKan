@@ -17,10 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final languageProvider = Provider.of<LanguageProvider>(context);
-    setState(() {
-      filteredCards = languageProvider.getTranslatedCards();
-    });
+    final languageProvider =
+        Provider.of<LanguageProvider>(context, listen: false);
+    filteredCards = languageProvider.getTranslatedCards();
   }
 
   void filterCards(String query) {
@@ -44,10 +43,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
   void _onNavBarTap(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-
     if (index == 1) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => DedicatoriaPage()));
@@ -55,93 +50,98 @@ class _HomeScreenState extends State<HomeScreen> {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => ConfiguracionPage()));
     }
+    setState(() {
+      _currentIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final languageProvider = Provider.of<LanguageProvider>(context);
+    return Consumer<LanguageProvider>(
+      builder: (context, languageProvider, child) {
+        final translatedCards = languageProvider.getTranslatedCards();
 
-    return Scaffold(
-      appBar: CustomAppBar(onSearch: filterCards),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.blue.shade300, Colors.purple.shade300],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+        return Scaffold(
+          appBar: CustomAppBar(onSearch: filterCards),
+          drawer: Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Colors.blue.shade300, Colors.purple.shade300],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  child: Text(
+                    languageProvider
+                        .translate("menu"), // ✅ Traducido dinámicamente
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
-              ),
-              child: Text(
-                languageProvider.translate("menu"), // ✅ Traducido dinámicamente
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
+                ListTile(
+                  leading: Icon(Icons.home, color: Colors.blue),
+                  title:
+                      Text(languageProvider.translate("home")), // ✅ Traducido
+                  onTap: () => Navigator.pop(context),
+                ),
+                ListTile(
+                  leading: Icon(Icons.favorite, color: Colors.red),
+                  title: Text(
+                      languageProvider.translate("dedication")), // ✅ Traducido
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DedicatoriaPage())),
+                ),
+                ListTile(
+                  leading: Icon(Icons.settings, color: Colors.grey),
+                  title: Text(
+                      languageProvider.translate("settings")), // ✅ Traducido
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ConfiguracionPage())),
+                ),
+              ],
             ),
-            ListTile(
-              leading: Icon(Icons.home, color: Colors.blue),
-              title: Text(languageProvider.translate("home")), // ✅ Traducido
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.favorite, color: Colors.red),
-              title: Text(
-                  languageProvider.translate("dedicatoria")), // ✅ Traducido
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DedicatoriaPage()));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings, color: Colors.grey),
-              title: Text(
-                  languageProvider.translate("configuracion")), // ✅ Traducido
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ConfiguracionPage()));
-              },
-            ),
-          ],
-        ),
-      ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16.0),
-        itemCount: filteredCards.length,
-        itemBuilder: (context, index) {
-          return AnimatedCard(
-            title: filteredCards[index]["title"]!,
-            description: filteredCards[index]["description"]!,
-            imageAsset: filteredCards[index]["image"]!,
-          );
-        },
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: _onNavBarTap,
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: languageProvider.translate("home")), // ✅ Traducido
-          BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: languageProvider.translate("dedicatoria")), // ✅ Traducido
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label:
-                  languageProvider.translate("configuracion")), // ✅ Traducido
-        ],
-      ),
+          ),
+          body: ListView.builder(
+            padding: const EdgeInsets.all(16.0),
+            itemCount: translatedCards.length,
+            itemBuilder: (context, index) {
+              return AnimatedCard(
+                title: translatedCards[index]["title"]!,
+                description: translatedCards[index]["description"]!,
+                imageAsset: translatedCards[index]["image"]!,
+              );
+            },
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            onTap: _onNavBarTap,
+            selectedItemColor: Colors.blue,
+            unselectedItemColor: Colors.grey,
+            items: [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: languageProvider.translate("home")), // ✅ Traducido
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.favorite),
+                  label:
+                      languageProvider.translate("dedication")), // ✅ Traducido
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.settings),
+                  label: languageProvider.translate("settings")), // ✅ Traducido
+            ],
+          ),
+        );
+      },
     );
   }
 }

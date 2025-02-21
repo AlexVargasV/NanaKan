@@ -238,7 +238,7 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
                   ),
                   // Título centrado
                   Text(
-                    "Carcinoma en Gatos",
+                    "Enfermedades Dentales",
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,

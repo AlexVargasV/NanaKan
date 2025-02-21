@@ -230,7 +230,7 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
                   ),
                   // Título centrado
                   Text(
-                    "Carcinoma en Gatos",
+                    "Calculos Renales",
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,

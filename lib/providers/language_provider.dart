@@ -27,6 +27,42 @@ class LanguageProvider extends ChangeNotifier {
     return _localizedData[key] ?? key;
   }
 
+  /// 🔹 Obtener lista traducida de secciones de Carcinoma
+  List<Map<String, String>> getTranslatedCarcinomaSections() {
+    return [
+      {
+        "title": translate("carcinoma_que_es"),
+        "content": translate("carcinoma_que_es_desc"),
+        "gif": "assets/images/cancer.gif",
+        "image": "assets/images/parra1.jpg"
+      },
+      {
+        "title": translate("factores_riesgo"),
+        "content": translate("factores_riesgo_desc"),
+        "gif": "assets/images/sun.gif",
+        "image": "assets/images/pa2.jpg"
+      },
+      {
+        "title": translate("zonas_afectadas"),
+        "content": translate("zonas_afectadas_desc"),
+        "gif": "assets/images/atencion.gif",
+        "image": "assets/images/pa3.jpg"
+      },
+      {
+        "title": translate("tipos_cce"),
+        "content": translate("tipos_cce_desc"),
+        "gif": "assets/images/tipos.gif",
+        "image": "assets/images/pa4.jpg"
+      },
+      {
+        "title": translate("prevencion"),
+        "content": translate("prevencion_desc"),
+        "gif": "assets/images/guia.gif",
+        "image": "assets/images/pa5.jpg"
+      }
+    ];
+  }
+
   /// 🔹 Obtener lista traducida de tarjetas del HomeScreen
   List<Map<String, String>> getTranslatedCards() {
     return [

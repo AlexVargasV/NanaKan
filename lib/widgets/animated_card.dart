@@ -3,13 +3,16 @@ import '../views/carcinoma_info_page.dart';
 import '../views/calculos_info_renales.dart';
 import '../views/dentales_info_page.dart';
 import '../views/detail_page.dart';
+import 'package:diacritic/diacritic.dart';
 
 class AnimatedCard extends StatelessWidget {
+  final String id;
   final String title;
   final String description;
   final String imageAsset;
 
   const AnimatedCard({
+    required this.id,
     required this.title,
     required this.description,
     required this.imageAsset,
@@ -18,22 +21,19 @@ class AnimatedCard extends StatelessWidget {
 
   void _navigateToDetail(BuildContext context) {
     // 🔹 Normalizamos el título quitando caracteres especiales y espacios extra
-    String normalizedTitle = title
-        .toLowerCase()
-        .replaceAll(RegExp(r'[^a-záéíóúüñ\s]'), '') // 🔹 Elimina símbolos
-        .trim();
+    String normalizedTitle = removeDiacritics(title.toLowerCase().trim());
 
     print("🔍 Navegando a: $normalizedTitle"); // 🔹 Depuración
 
     Widget nextPage;
-    switch (normalizedTitle) {
-      case "cáncer en gatos":
+    switch (id) {
+      case "cancer":
         nextPage = CarcinomaInfoPage();
         break;
-      case "cálculos renales":
+      case "calculos":
         nextPage = CalculosInfoPage();
         break;
-      case "enfermedades dentales":
+      case "dentales":
         nextPage = DentalesInfoPage();
         break;
       default:

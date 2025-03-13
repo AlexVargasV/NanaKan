@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../widgets/image_zoom_widget.dart';
+import '../providers/language_provider.dart';
+import 'package:provider/provider.dart';
 
 class CarcinomaInfoPage extends StatefulWidget {
   @override
@@ -9,47 +11,18 @@ class CarcinomaInfoPage extends StatefulWidget {
 }
 
 class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
-  final List<Map<String, String>> sections = [
-    {
-      "title":
-          "\u26A0\ufe0f ¿Qué es el Carcinoma de Células Escamosas en Gatos?",
-      "content":
-          "El carcinoma de células escamosas (CCE) es un tipo de tumor agresivo en gatos, que a pesar de los tratamientos disponibles, tiene un pronóstico grave debido a que generalmente no se detecta hasta que está en una etapa avanzada. Esta forma de cáncer afecta principalmente a gatos mayores y es una de las principales causas de tumores en la piel, nariz y boca de los felinos.",
-      "gif": "assets/images/cancer.gif",
-      "image": "assets/images/parra1.jpg"
-    },
-    {
-      "title": "Factores de Riesgo",
-      "content":
-          "\u2605 Exposición al sol: La radiación ultravioleta es uno de los principales factores que pueden causar este tipo de cáncer.\n\n\u2605 Falta de pigmentación: Los gatos con piel blanca o áreas sin pigmento son más vulnerables.\n\n\u2605 Escaso pelaje: Los gatos con poco pelo están más expuestos al daño solar en las zonas descubiertas.\n\n\u2605 Virus del papiloma: La infección por este virus puede aumentar el riesgo.\n\n\u2605 Sistema inmunológico débil: Una inmunosupresión o enfermedades crónicas de la piel pueden hacer que el gato sea más susceptible.",
-      "gif": "assets/images/sun.gif",
-      "image": "assets/images/pa2.jpg"
-    },
-    {
-      "title": "\u2022 Zonas Afectadas",
-      "content":
-          "\u2605 Orejas: Los pabellones auriculares son las áreas más afectadas, representando el 72% de los casos.\n\n\u2605 Alrededor de los ojos: Esta zona es vulnerable y constituye el 22% de los casos.\n\n\u2605 Hocico: El dorso del hocico también puede verse afectado, aunque menos frecuentemente (6% de los casos).",
-      "gif": "assets/images/atencion.gif",
-      "image": "assets/images/pa3.jpg"
-    },
-    {
-      "title": "\u2728 Tipos de CCE",
-      "content":
-          "\u2605 CCE Oral: Este tipo de carcinoma afecta la boca del gato, dificultando su alimentación y causando molestias visibles.\n\n\u2605 CCE Ocular: Afecta los ojos del gato, pudiendo provocar inflamación, irritación o cambios en su visión.\n\n\u2605 **CCE Cutáneo (CCSC): Este carcinoma se desarrolla en la piel, especialmente en áreas con poca cobertura de pelo, como orejas, nariz y alrededor de los ojos.",
-      "gif": "assets/images/tipos.gif",
-      "image": "assets/images/pa4.jpg"
-    },
-    {
-      "title": "\u2714\ufe0f Prevención y Detección Temprana",
-      "content":
-          "Proteger a tu gato de la exposición prolongada al sol es una de las mejores formas de prevenir estos tumores, especialmente en zonas sensibles como orejas y nariz. Además, llevarlo regularmente al veterinario permite detectar posibles anomalías a tiempo, aumentando las posibilidades de un tratamiento exitoso.",
-      "gif": "assets/images/guia.gif",
-      "image": "assets/images/pa5.jpg"
-    }
-  ];
-
-  final List<bool> visibilityStatus = [true, false, false, false, false];
+  late List<Map<String, String>> sections;
+  late List<bool> visibilityStatus;
   bool showCarousel = false;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final languageProvider = Provider.of<LanguageProvider>(context);
+    sections = languageProvider.getTranslatedCarcinomaSections();
+    // 🔹 Sincronizar el array de visibilidad con la cantidad de secciones
+    visibilityStatus = List.generate(sections.length, (_) => false);
+    visibilityStatus[0] = true; // La primera carta se muestra por defecto
+  }
 
   void _showWarningDialog() {
     showDialog(
@@ -79,7 +52,7 @@ class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
                 ),
                 SizedBox(height: 16),
                 Text(
-                  "Advertencia",
+                  Provider.of<LanguageProvider>(context).translate("warning"),
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -88,7 +61,8 @@ class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  "Las imágenes a continuación contienen contenido gráfico sensible. ¿Desea continuar?",
+                  Provider.of<LanguageProvider>(context)
+                      .translate("graphic_warning"),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
@@ -113,7 +87,8 @@ class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
                         Navigator.of(context).pop();
                       },
                       child: Text(
-                        "Cancelar",
+                        Provider.of<LanguageProvider>(context)
+                            .translate("btn_cancel"),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -137,7 +112,8 @@ class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
                         Navigator.of(context).pop();
                       },
                       child: Text(
-                        "Aceptar",
+                        Provider.of<LanguageProvider>(context)
+                            .translate("btn_acept"),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -155,17 +131,20 @@ class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
     );
   }
 
+  // 🔹 Método mejorado para verificar visibilidad al hacer scroll
   bool _isElementVisible(BuildContext context, int index) {
-    final RenderBox? renderBox = context.findRenderObject() as RenderBox?;
-    if (renderBox != null) {
-      final position = renderBox.localToGlobal(Offset.zero);
-      return position.dy < MediaQuery.of(context).size.height * 0.8;
+    final RenderObject? renderObject = context.findRenderObject();
+    if (renderObject is RenderBox) {
+      final position = renderObject.localToGlobal(Offset.zero);
+      final screenHeight = MediaQuery.of(context).size.height;
+      return position.dy < screenHeight * 0.9; // Mayor tolerancia para mostrar
     }
     return false;
   }
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Scaffold(
       // 🔹 Aplicamos el mismo AppBar con gradiente
       appBar: PreferredSize(
@@ -209,7 +188,7 @@ class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
                   ),
                   // Título centrado
                   Text(
-                    "Carcinoma en Gatos",
+                    languageProvider.translate("carcinoma_title"),
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -239,7 +218,6 @@ class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
                 setState(() {
                   visibilityStatus[i] = true;
                 });
-                break;
               }
             }
           }
@@ -251,6 +229,7 @@ class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
             ...sections.asMap().entries.map((entry) {
               int index = entry.key;
               Map<String, String> section = entry.value;
+
               return AnimatedOpacity(
                 opacity: visibilityStatus[index] ? 1.0 : 0.0,
                 duration: Duration(milliseconds: 800),
@@ -282,7 +261,6 @@ class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
                         if (section["image"] != null)
                           GestureDetector(
                             onTap: () {
-                              // Abrir una nueva pantalla con zoom habilitado
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -300,10 +278,9 @@ class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
                                 width: double.infinity,
                                 fit: BoxFit.cover,
                               )
-                                  // Efecto de pulso usando flutter_animate
                                   .animate(
-                                      onPlay: (controller) => controller
-                                          .repeat()) // Continuous repeat
+                                      onPlay: (controller) =>
+                                          controller.repeat()) // Efecto suave
                                   .scale(
                                     begin: Offset(1, 1),
                                     end: Offset(1.1, 1.1),
@@ -363,7 +340,7 @@ class _CarcinomaInfoPageState extends State<CarcinomaInfoPage> {
                       const SizedBox(width: 8),
                       Flexible(
                         child: Text(
-                          "Imágenes con la enfermedad en etapa avanzada",
+                          languageProvider.translate("carrousel_message"),
                           style: TextStyle(
                             color: Colors.white, // Color del texto
                             fontWeight: FontWeight.bold,

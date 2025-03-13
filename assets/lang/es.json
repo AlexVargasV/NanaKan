@@ -12,6 +12,13 @@
     "card_calculos_desc": "Cómo afectan a los gatos.",
     "card_dentales": "Enfermedades Dentales",
     "card_dentales_desc": "Placa y gingivitis felina.",
+
+    "warning": "Advertencia",
+    "btn_cancel": "Cancelar",
+    "btn_acept": "Aceptar",
+    "carrousel_message": "Imágenes con la enfermedad en etapa avanzada",
+    "graphic_warning": "Las imágenes a continuación contienen contenido gráfico sensible. ¿Desea continuar?",
+    "carcinoma_title": "Cancer en gatos",
     "carcinoma_que_es": "⚠️ ¿Qué es el Carcinoma de Células Escamosas en Gatos?",
     "carcinoma_que_es_desc": "El carcinoma de células escamosas (CCE) es un tipo de tumor agresivo en gatos, que a pesar de los tratamientos disponibles, tiene un pronóstico grave debido a que generalmente no se detecta hasta que está en una etapa avanzada. Esta forma de cáncer afecta principalmente a gatos mayores y es una de las principales causas de tumores en la piel, nariz y boca de los felinos.",
     "factores_riesgo": "Factores de Riesgo",
@@ -22,6 +29,8 @@
     "tipos_cce_desc": "⭐ CCE Oral: Este tipo de carcinoma afecta la boca del gato, dificultando su alimentación y causando molestias visibles.\n\n\u2605 CCE Ocular: Afecta los ojos del gato, pudiendo provocar inflamación, irritación o cambios en su visión.\n\n\u2605 **CCE Cutáneo (CCSC): Este carcinoma se desarrolla en la piel, especialmente en áreas con poca cobertura de pelo, como orejas, nariz y alrededor de los ojos.",
     "prevencion": "✔️ Prevención y Detección Temprana",
     "prevencion_desc": "Proteger a tu gato de la exposición prolongada al sol es una de las mejores formas de prevenir estos tumores, especialmente en zonas sensibles como orejas y nariz. Además, llevarlo regularmente al veterinario permite detectar posibles anomalías a tiempo, aumentando las posibilidades de un tratamiento exitoso.",
+    
+
     "dedicatoria_title": "Dedicatoria",
     "dedicatoria_heading": "En memoria de Kan",
     "dedicatoria_text": "Esta aplicación fue inspirada en mi amado gatito Kan, quien nos dejó debido a esta enfermedad.\n\nSus maullidos, ronroneos y amor llenaron nuestras vidas. Ahora, su legado vive en cada información compartida aquí, ayudando a proteger a otros felinos.\n\nPorque cada ronroneo merece ser eterno. 💙",

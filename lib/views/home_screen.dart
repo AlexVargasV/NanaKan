@@ -116,6 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
             itemCount: translatedCards.length,
             itemBuilder: (context, index) {
               return AnimatedCard(
+                id: translatedCards[index]["id"]!,
                 title: translatedCards[index]["title"]!,
                 description: translatedCards[index]["description"]!,
                 imageAsset: translatedCards[index]["image"]!,

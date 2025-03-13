@@ -67,16 +67,19 @@ class LanguageProvider extends ChangeNotifier {
   List<Map<String, String>> getTranslatedCards() {
     return [
       {
+        "id": "cancer",
         "title": translate("card_cancer"),
         "description": translate("card_cancer_desc"),
         "image": 'assets/images/1.webp'
       },
       {
+        "id": "calculos",
         "title": translate("card_calculos"),
         "description": translate("card_calculos_desc"),
         "image": 'assets/images/2.webp'
       },
       {
+        "id": "dentales",
         "title": translate("card_dentales"),
         "description": translate("card_dentales_desc"),
         "image": 'assets/images/3.webp'

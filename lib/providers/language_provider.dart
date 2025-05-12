@@ -63,6 +63,82 @@ class LanguageProvider extends ChangeNotifier {
     ];
   }
 
+  List<Map<String, String>> getTranslatedCalculosSections() {
+    return [
+      {
+        "title": translate("calculos_que_son"),
+        "content": translate("calculos_que_son_desc"),
+        "gif": "assets/images/cancer.gif",
+        "image": "assets/images/1cr.jpg"
+      },
+      {
+        "title": translate("calculos_formacion"),
+        "content": translate("calculos_formacion_desc"),
+        "gif": "assets/images/sun.gif",
+        "image": "assets/images/2cr.jpg"
+      },
+      {
+        "title": translate("calculos_riesgo"),
+        "content": translate("calculos_riesgo_desc"),
+        "gif": "assets/images/atencion.gif",
+        "image": "assets/images/3cr.jpg"
+      },
+      {
+        "title": translate("calculos_signos"),
+        "content": translate("calculos_signos_desc"),
+        "gif": "assets/images/tipos.gif",
+        "image": "assets/images/4cr.jpg"
+      },
+      {
+        "title": translate("calculos_prevencion"),
+        "content": translate("calculos_prevencion_desc"),
+        "gif": "assets/images/guia.gif",
+        "image": "assets/images/cr5.jpg"
+      }
+    ];
+  }
+
+  List<Map<String, String>> getTranslatedDentalesSections() {
+    return [
+      {
+        "title": translate("dentales_que_son"),
+        "content": translate("dentales_que_son_desc"),
+        "gif": "assets/images/cancer.gif",
+        "image": "assets/images/1ed.webp"
+      },
+      {
+        "title": translate("dentales_periodontal"),
+        "content": translate("dentales_periodontal_desc"),
+        "gif": "assets/images/sun.gif",
+        "image": "assets/images/2ed.webp"
+      },
+      {
+        "title": translate("dentales_etapas"),
+        "content": translate("dentales_etapas_desc"),
+        "gif": "assets/images/atencion.gif",
+        "image": "assets/images/3ed.webp"
+      },
+      {
+        "title": translate("dentales_riesgo"),
+        "content": translate("dentales_riesgo_desc"),
+        "gif": "assets/images/tipos.gif",
+        "image": "assets/images/4ed.webp"
+      },
+      {
+        "title": translate("dentales_signos"),
+        "content": translate("dentales_signos_desc"),
+        "gif": "assets/images/guia.gif",
+        "image": "assets/images/5ed.webp"
+      },
+      {
+        "title": translate("dentales_prevencion"),
+        "content": translate("dentales_prevencion_desc"),
+        "gif": "assets/images/guia.gif",
+        "image": "assets/images/6ed.webp"
+      }
+    ];
+  }
+
   /// 🔹 Obtener lista traducida de tarjetas del HomeScreen
   List<Map<String, String>> getTranslatedCards() {
     return [

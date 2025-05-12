@@ -17,12 +17,38 @@
     "card_dentales": "Dental Diseases",
     "card_dentales_desc": "Plaque and feline gingivitis.",
 
+    "calculos_que_son": "⚠️ What are kidney stones in cats?",
+    "calculos_que_son_desc": "Kidney stones, or renal calculi, are solid accumulations of minerals that can form in the kidneys or urinary tract. In cats, 98% of these stones are composed of calcium oxalate.\n\nTypes of calcium oxalate stones:\n\n• Monohydrate: Related to excess oxalate in urine (hyperoxaluria).\n• Dihydrate: Associated with high calcium levels in urine (hypercalciuria).\n\nIn cats, nearly all stones are of the monohydrate type, suggesting that excess oxalate is the main cause.",
+    "calculos_formacion": "Why do kidney stones form?",
+    "calculos_formacion_desc": "Main causes:\n\n• Diet: Exclusive dry food or diets that overly acidify urine.\n• Metabolic factors: High calcium or oxalate levels.\n• Genetics: Some breeds are more predisposed.\n• Urinary tract infections.",
+    "calculos_riesgo": "Risk factors",
+    "calculos_riesgo_desc": "• Exclusive dry food: Reduces water intake and concentrates urine.\n• Neutered male: Higher risk of obstructions due to narrower urethra.\n• Predisposed breeds: Persians, Himalayans, Birmans, Ragdolls, American Shorthairs, and Scottish Folds.\n• Metabolic problems: Hypercalcemia and hyperoxaluria.",
+    "calculos_signos": "How do I know if my cat has stones?",
+    "calculos_signos_desc": "Warning signs:\n\n• Difficulty or pain when urinating.\n• Blood in urine.\n• Excessive genital licking.\n• Loss of appetite or lethargy.\n• Abdominal inflammation.\n\nImportant: If you notice these signs, go to the vet immediately.",
+    "calculos_prevencion": "Prevention based on the cat’s life stage",
+    "calculos_prevencion_desc": "Kittens (up to 1 year):\n• Proper diet: Moist foods rich in nutrients.\n• Hydration: Constant access to fresh water.\n• Regular check-ups: Detect issues early.\n\nAdult cats (1–7 years):\n• Combine dry and wet food: Promotes hydration.\n• Neutered cat diets: Manage weight and lower urinary risks.\n\nSenior cats (>7 years):\n• Renal-support diet: Eases kidney workload.\n• Health monitoring: Frequent check-ups to assess renal and urinary function.",
+
+
+    "dentales_que_son": "⚠️ What are dental diseases in cats?",
+    "dentales_que_son_desc": "Dental diseases are extremely common in cats, but they often go unnoticed until pain or health problems become severe. The accumulation of plaque and tartar can lead to infections, tooth loss, and even affect internal organs if not treated in time.",
+    "dentales_periodontal": "What is periodontal disease?",
+    "dentales_periodontal_desc": "It is a progressive inflammation of the gums and supporting tooth structures due to plaque and tartar buildup. If untreated, it can cause serious infections, tooth loss, and even affect organs like the heart, kidneys, and liver.",
+    "dentales_etapas": "Stages of periodontal disease",
+    "dentales_etapas_desc": "1️⃣ Gingivitis (Stage 1 - Reversible): Inflammation of the gums without bone loss. Symptoms: Red gums, mild bad breath.\n\n2️⃣ Early Periodontitis (Stage 2): Severe inflammation with early tissue damage. Symptoms: Moderate bad breath, bleeding gums when eating or touching the mouth.\n\n3️⃣ Moderate Periodontitis (Stage 3): Evident bone loss and periodontal pockets. Symptoms: Pain, drooling, tooth loss, trouble eating.\n\n4️⃣ Severe Periodontitis (Stage 4 - Irreversible): Deep infection with major bone and tooth loss. May cause abscesses and bacteria in the bloodstream.",
+    "dentales_riesgo": "Risk factors",
+    "dentales_riesgo_desc": "• Poor dental hygiene: Main cause of plaque accumulation.\n• Inadequate diet: Soft food-only diets promote tartar.\n• Genetic predisposition: Breeds like Persian and Siamese are more prone.\n• Older age: Cats over 5 years are at greater risk.\n• Weakened immune system: Diseases like FeLV and FIV increase risk of oral infections.", 
+    "dentales_signos": "Warning signs in cats",
+    "dentales_signos_desc": "🚨 Warning signs:\n\n📌 Bad breath (halitosis).\n📌 Red, inflamed, or bleeding gums.\n📌 Trouble eating or preference for soft food.\n📌 Excessive drooling (sometimes bloody).\n📌 Rubbing face or shaking head frequently.\n📌 Loose or missing teeth.\n📌 Weight loss due to reduced food intake.\n\n🔴 Important: Cats hide pain, so owners may not notice until the disease is advanced.",
+    "dentales_prevencion": "Prevention based on the cat’s life stage",
+    "dentales_prevencion_desc": "🐱 Young cats (up to 1 year):\n• Introduce tooth brushing gradually.\n• Balanced diet with dental kibble.\n• Annual vet check-up for dental monitoring.\n\n🐈 Adult cats (1–7 years):\n• Regular tooth brushing (at least 3 times a week).\n• Proper diet with dental kibble and dental treats.\n• Veterinary check-ups every 6–12 months.\n\n🐈‍⬛ Senior cats (>7 years):\n• Professional dental cleanings when needed.\n• Water additives or dental gels as support.\n• Frequent health checks to detect oral issues early.",
+    
+    
     "btn_cancel": "Cancel",
     "btn_acept": "Accept",
     "carrousel_message": "Images with the disease in advanced stage",
     "warning": "Warning",
     "graphic_warning": "The images below contain sensitive graphic content. Do you wish to continue?",
-    "carcinoma_title": "cancer in cats",
+    "carcinoma_title": "Cancer in cats",
     "carcinoma_que_es": "⚠️ What is Squamous Cell Carcinoma in Cats?",
     "carcinoma_que_es_desc": "Squamous cell carcinoma (SCC) is an aggressive type of tumor in cats that, despite available treatments, has a severe prognosis because it is generally not detected until it is in an advanced stage. This form of cancer primarily affects older cats and is one of the leading causes of tumors on the skin, nose, and mouth in felines.",
     "factores_riesgo": "Risk Factors",
@@ -39,4 +65,5 @@
     "dedicatoria_text": "This app was inspired by my beloved cat Kan, who left us due to this disease.\n\nHis meows, purrs, and love filled our lives. Now, his legacy lives on in the information shared here, helping to protect other felines.\n\nBecause every purr deserves to be eternal. 💙",
     "dedicatoria_gallery": "Memories of Kan 🐾",
     "dedicatoria_back": "Back to Home"
+
 }  

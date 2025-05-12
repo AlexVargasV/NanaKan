@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../providers/language_provider.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/animated_card.dart';
-import 'configuracion_page.dart';
+import 'test_page.dart';
 import 'dedicatoria_page.dart';
 
 class HomeScreen extends StatefulWidget {

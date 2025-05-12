@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../widgets/image_zoom_widget.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import '../providers/language_provider.dart';
+import 'package:provider/provider.dart';
 //import 'package:lottie/lottie.dart';
 
 class CalculosInfoPage extends StatefulWidget {
@@ -10,67 +12,18 @@ class CalculosInfoPage extends StatefulWidget {
 }
 
 class _CalculosInfoPageState extends State<CalculosInfoPage> {
-  final List<Map<String, String>> sections = [
-    {
-      "title": "\u26A0\ufe0f ¿Qué son los cálculos renales en gatos?",
-      "content": "Los cálculos renales, o piedras en los riñones, son acumulaciones sólidas de minerales que pueden formarse en los riñones o las vías urinarias. En los gatos, el 98% de estos cálculos están compuestos por oxalato de calcio.\n\n"
-          "Tipos de cálculos de oxalato de calcio:\n\n"
-          "• Monohidrato: Relacionado con exceso de oxalato en la orina (hiperoxaluria).\n"
-          "• Dihidrato: Asociado con niveles altos de calcio en la orina (hipercalciuria).\n\n"
-          "En gatos, casi todos los cálculos son del tipo monohidrato, lo que sugiere que el exceso de oxalato es la principal causa.",
-      "gif": "assets/images/cancer.gif",
-      "image": "assets/images/1cr.jpg"
-    },
-    {
-      "title": "¿Por qué se forman los cálculos renales?",
-      "content": "Causas principales:\n\n"
-          "• Dieta: Consumo exclusivo de comida seca o alimentos que acidifican mucho la orina.\n"
-          "• Factores metabólicos: Niveles altos de calcio u oxalato.\n"
-          "• Genética: Algunas razas tienen mayor predisposición.\n"
-          "• Infecciones urinarias.",
-      "gif": "assets/images/sun.gif",
-      "image": "assets/images/2cr.jpg"
-    },
-    {
-      "title": "Factores de riesgo",
-      "content": "• Dieta seca exclusiva: Reduce la ingesta de agua y concentra la orina.\n"
-          "• Ser macho castrado: Mayor riesgo de obstrucciones por su uretra estrecha.\n"
-          "• Razas predispuestas: Persas, Himalayos, Birmanos, Ragdoll, American Shorthair y Scottish Fold.\n"
-          "• Problemas metabólicos: Hipercalcemia e hiperoxaluria.",
-      "gif": "assets/images/atencion.gif",
-      "image": "assets/images/3cr.jpg"
-    },
-    {
-      "title": "¿Cómo saber si mi gato tiene cálculos?",
-      "content": "Señales de alerta:\n\n"
-          "• Dificultad o dolor al orinar.\n"
-          "• Orina con sangre.\n"
-          "• Lamido excesivo del área genital.\n"
-          "• Pérdida de apetito o decaimiento.\n"
-          "• Inflamación abdominal.\n\n"
-          "Importante: Si notas estos signos, acude de inmediato al veterinario.",
-      "gif": "assets/images/tipos.gif",
-      "image": "assets/images/4cr.jpg"
-    },
-    {
-      "title": "Prevención según la etapa de vida del gato",
-      "content": "Gatos cachorros (hasta 1 año):\n"
-          "• Dieta adecuada: Alimentos húmedos ricos en nutrientes.\n"
-          "• Hidrátalo: Agua fresca constantemente.\n"
-          "• Chequeos regulares: Detecta problemas tempranamente.\n\n"
-          "Gatos adultos (1-7 años):\n"
-          "• Combina comida seca y húmeda: Fomenta la hidratación.\n"
-          "• Alimentos para gatos castrados: Controlan el peso y reducen riesgos urinarios.\n\n"
-          "Gatos mayores (>7 años):\n"
-          "• Dieta para riñones: Reduce la carga renal con alimentos específicos.\n"
-          "• Control de salud: Chequeos frecuentes para vigilar función renal y urinaria.",
-      "gif": "assets/images/guia.gif",
-      "image": "assets/images/cr5.jpg"
-    }
-  ];
-
-  final List<bool> visibilityStatus = [true, false, false, false, false];
+  late List<Map<String, String>> sections;
+  late List<bool> visibilityStatus;
   bool showCarousel = false;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final languageProvider = Provider.of<LanguageProvider>(context);
+    sections = languageProvider.getTranslatedCalculosSections();
+    // 🔹 Sincronizar el array de visibilidad con la cantidad de secciones
+    visibilityStatus = List.generate(sections.length, (_) => false);
+    visibilityStatus[0] = true; // La primera carta se muestra por defecto
+  }
 
   void _showWarningDialog() {
     showDialog(
@@ -100,7 +53,7 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
                 ),
                 SizedBox(height: 16),
                 Text(
-                  "Advertencia",
+                  Provider.of<LanguageProvider>(context).translate("warning"),
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -109,7 +62,8 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  "Las imágenes a continuación contienen contenido gráfico sensible. ¿Desea continuar?",
+                  Provider.of<LanguageProvider>(context)
+                      .translate("graphic_warning"),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
@@ -134,7 +88,8 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
                         Navigator.of(context).pop();
                       },
                       child: Text(
-                        "Cancelar",
+                        Provider.of<LanguageProvider>(context)
+                            .translate("btn_cancel"),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -158,7 +113,8 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
                         Navigator.of(context).pop();
                       },
                       child: Text(
-                        "Aceptar",
+                        Provider.of<LanguageProvider>(context)
+                            .translate("btn_acept"),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -177,16 +133,18 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
   }
 
   bool _isElementVisible(BuildContext context, int index) {
-    final RenderBox? renderBox = context.findRenderObject() as RenderBox?;
-    if (renderBox != null) {
-      final position = renderBox.localToGlobal(Offset.zero);
-      return position.dy < MediaQuery.of(context).size.height * 0.8;
+    final RenderObject? renderObject = context.findRenderObject();
+    if (renderObject is RenderBox) {
+      final position = renderObject.localToGlobal(Offset.zero);
+      final screenHeight = MediaQuery.of(context).size.height;
+      return position.dy < screenHeight * 0.9; // Mayor tolerancia para mostrar
     }
     return false;
   }
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Scaffold(
       // 🔹 Aplicamos el mismo AppBar con gradiente
       appBar: PreferredSize(
@@ -230,7 +188,7 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
                   ),
                   // Título centrado
                   Text(
-                    "Calculos Renales",
+                    languageProvider.translate("card_calculos"),
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -272,6 +230,7 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
             ...sections.asMap().entries.map((entry) {
               int index = entry.key;
               Map<String, String> section = entry.value;
+
               return AnimatedOpacity(
                 opacity: visibilityStatus[index] ? 1.0 : 0.0,
                 duration: Duration(milliseconds: 800),
@@ -303,7 +262,6 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
                         if (section["image"] != null)
                           GestureDetector(
                             onTap: () {
-                              // Abrir una nueva pantalla con zoom habilitado
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -321,10 +279,9 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
                                 width: double.infinity,
                                 fit: BoxFit.cover,
                               )
-                                  // Efecto de pulso usando flutter_animate
                                   .animate(
-                                      onPlay: (controller) => controller
-                                          .repeat()) // Continuous repeat
+                                      onPlay: (controller) =>
+                                          controller.repeat()) // Efecto suave
                                   .scale(
                                     begin: Offset(1, 1),
                                     end: Offset(1.1, 1.1),
@@ -384,15 +341,15 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
                       const SizedBox(width: 8),
                       Flexible(
                         child: Text(
-                          "Imágenes con la enfermedad en etapa avanzada",
+                          Provider.of<LanguageProvider>(context)
+                              .translate("carrousel_message"),
                           style: TextStyle(
-                            color: Colors.white, // Color del texto
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
-                          overflow:
-                              TextOverflow.ellipsis, // Recorta si es muy largo
-                          maxLines: 2, // Limita a dos líneas
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
                         ),
                       ),
                     ],

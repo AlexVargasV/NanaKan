@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../widgets/image_zoom_widget.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import '../providers/language_provider.dart';
+import 'package:provider/provider.dart';
 //import 'package:lottie/lottie.dart';
 
 class DentalesInfoPage extends StatefulWidget {
@@ -10,75 +12,18 @@ class DentalesInfoPage extends StatefulWidget {
 }
 
 class _DentalesInfoPageState extends State<DentalesInfoPage> {
-  final List<Map<String, String>> sections = [
-    {
-      "title": "⚠️ ¿Qué son las enfermedades dentales en gatos?",
-      "content":
-          "Las enfermedades dentales son extremadamente comunes en gatos, pero muchas veces pasan desapercibidas hasta que el dolor o los problemas de salud son graves. La acumulación de placa y sarro puede provocar infecciones, pérdida de dientes y afectar órganos internos si no se trata a tiempo.",
-      "gif": "assets/images/cancer.gif",
-      "image": "assets/images/1ed.webp"
-    },
-    {
-      "title": "¿Qué es la enfermedad periodontal?",
-      "content":
-          "Es una inflamación progresiva de las encías y estructuras de soporte del diente debido a la acumulación de placa y sarro. Si no se trata a tiempo, puede derivar en infecciones graves, pérdida de dientes e incluso afectar órganos como el corazón, riñones e hígado.",
-      "gif": "assets/images/sun.gif",
-      "image": "assets/images/2ed.webp"
-    },
-    {
-      "title": "Etapas de la enfermedad periodontal",
-      "content": "1️⃣ Gingivitis (Etapa 1 - Reversible): Inflamación de las encías sin pérdida ósea. Síntomas: Encías enrojecidas, mal aliento leve.\n\n"
-          "2️⃣ Periodontitis Temprana (Etapa 2): Inflamación severa con inicio de destrucción del tejido de soporte. Síntomas: Mal aliento moderado, sangrado de encías al comer o al frotar la boca.\n\n"
-          "3️⃣ Periodontitis Moderada (Etapa 3): Pérdida ósea evidente y formación de bolsas periodontales. Síntomas: Dolor, babeo, pérdida de dientes, dificultad para comer.\n\n"
-          "4️⃣ Periodontitis Severa (Etapa 4 - Irreversible): Infección profunda con pérdida masiva de hueso y dientes. Puede generar abscesos y bacterias en el torrente sanguíneo.",
-      "gif": "assets/images/atencion.gif",
-      "image": "assets/images/3ed.webp"
-    },
-    {
-      "title": "Factores de riesgo",
-      "content": "• Falta de higiene dental: Principal causa de la acumulación de placa.\n"
-          "• Dieta inadecuada: Alimentación exclusivamente blanda favorece el sarro.\n"
-          "• Predisposición genética: Razas como el Persa y Siamés son más propensas.\n"
-          "• Edad avanzada: Gatos mayores de 5 años tienen mayor riesgo.\n"
-          "• Sistema inmunológico debilitado: Enfermedades como FeLV y FIV predisponen a infecciones bucales.",
-      "gif": "assets/images/tipos.gif",
-      "image": "assets/images/4ed.webp"
-    },
-    {
-      "title": "Síntomas de alerta en gatos",
-      "content": "🚨 Señales de advertencia:\n\n"
-          "📌 Mal aliento (halitosis).\n"
-          "📌 Encías rojas, inflamadas o sangrantes.\n"
-          "📌 Dificultad para comer o preferencia por comida blanda.\n"
-          "📌 Babeo excesivo (a veces con sangre).\n"
-          "📌 Frotarse la cara o sacudir la cabeza con frecuencia.\n"
-          "📌 Dientes flojos o ausentes.\n"
-          "📌 Pérdida de peso por reducción en la ingesta de alimento.\n\n"
-          "🔴 Importante: Los gatos ocultan el dolor, por lo que los dueños no suelen notar el problema hasta que está avanzado.",
-      "gif": "assets/images/guia.gif",
-      "image": "assets/images/5ed.webp"
-    },
-    {
-      "title": "Prevención según la etapa de vida del gato",
-      "content": "🐱 Gatos jóvenes (hasta 1 año):\n"
-          "• Introducir el cepillado dental de forma gradual.\n"
-          "• Dieta equilibrada con croquetas dentales.\n"
-          "• Revisión veterinaria anual para control dental.\n\n"
-          "🐈 Gatos adultos (1-7 años):\n"
-          "• Cepillado dental regular (mínimo 3 veces por semana).\n"
-          "• Alimentación adecuada con croquetas dentales y snacks específicos.\n"
-          "• Revisiones veterinarias cada 6-12 meses.\n\n"
-          "🐈‍⬛ Gatos mayores (>7 años):\n"
-          "• Limpieza dental profesional cuando sea necesario.\n"
-          "• Aditivos en el agua o geles dentales como apoyo.\n"
-          "• Controles de salud frecuentes para detectar problemas bucales.",
-      "gif": "assets/images/guia.gif",
-      "image": "assets/images/6ed.webp"
-    }
-  ];
-
-  final List<bool> visibilityStatus = [true, false, false, false, false, false];
+  late List<Map<String, String>> sections;
+  late List<bool> visibilityStatus;
   bool showCarousel = false;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final languageProvider = Provider.of<LanguageProvider>(context);
+    sections = languageProvider.getTranslatedDentalesSections();
+    // 🔹 Sincronizar el array de visibilidad con la cantidad de secciones
+    visibilityStatus = List.generate(sections.length, (_) => false);
+    visibilityStatus[0] = true; // La primera carta se muestra por defecto
+  }
 
   void _showWarningDialog() {
     showDialog(
@@ -108,7 +53,7 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
                 ),
                 SizedBox(height: 16),
                 Text(
-                  "Advertencia",
+                  Provider.of<LanguageProvider>(context).translate("warning"),
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -117,7 +62,8 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  "Las imágenes a continuación contienen contenido gráfico sensible. ¿Desea continuar?",
+                  Provider.of<LanguageProvider>(context)
+                      .translate("graphic_warning"),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
@@ -142,7 +88,8 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
                         Navigator.of(context).pop();
                       },
                       child: Text(
-                        "Cancelar",
+                        Provider.of<LanguageProvider>(context)
+                            .translate("btn_cancel"),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -166,7 +113,8 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
                         Navigator.of(context).pop();
                       },
                       child: Text(
-                        "Aceptar",
+                        Provider.of<LanguageProvider>(context)
+                            .translate("btn_acept"),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -185,16 +133,18 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
   }
 
   bool _isElementVisible(BuildContext context, int index) {
-    final RenderBox? renderBox = context.findRenderObject() as RenderBox?;
-    if (renderBox != null) {
-      final position = renderBox.localToGlobal(Offset.zero);
-      return position.dy < MediaQuery.of(context).size.height * 0.8;
+    final RenderObject? renderObject = context.findRenderObject();
+    if (renderObject is RenderBox) {
+      final position = renderObject.localToGlobal(Offset.zero);
+      final screenHeight = MediaQuery.of(context).size.height;
+      return position.dy < screenHeight * 0.9; // Mayor tolerancia para mostrar
     }
     return false;
   }
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context);
     return Scaffold(
       // 🔹 Aplicamos el mismo AppBar con gradiente
       appBar: PreferredSize(
@@ -238,7 +188,7 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
                   ),
                   // Título centrado
                   Text(
-                    "Enfermedades Dentales",
+                    languageProvider.translate("card_dentales"),
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -280,6 +230,7 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
             ...sections.asMap().entries.map((entry) {
               int index = entry.key;
               Map<String, String> section = entry.value;
+
               return AnimatedOpacity(
                 opacity: visibilityStatus[index] ? 1.0 : 0.0,
                 duration: Duration(milliseconds: 800),
@@ -311,7 +262,6 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
                         if (section["image"] != null)
                           GestureDetector(
                             onTap: () {
-                              // Abrir una nueva pantalla con zoom habilitado
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -329,10 +279,9 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
                                 width: double.infinity,
                                 fit: BoxFit.cover,
                               )
-                                  // Efecto de pulso usando flutter_animate
                                   .animate(
-                                      onPlay: (controller) => controller
-                                          .repeat()) // Continuous repeat
+                                      onPlay: (controller) =>
+                                          controller.repeat()) // Efecto suave
                                   .scale(
                                     begin: Offset(1, 1),
                                     end: Offset(1.1, 1.1),
@@ -392,15 +341,15 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
                       const SizedBox(width: 8),
                       Flexible(
                         child: Text(
-                          "Imágenes con la enfermedad en etapa avanzada",
+                          Provider.of<LanguageProvider>(context)
+                              .translate("carrousel_message"),
                           style: TextStyle(
-                            color: Colors.white, // Color del texto
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
-                          overflow:
-                              TextOverflow.ellipsis, // Recorta si es muy largo
-                          maxLines: 2, // Limita a dos líneas
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
                         ),
                       ),
                     ],

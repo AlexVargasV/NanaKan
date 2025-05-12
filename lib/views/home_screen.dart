@@ -27,17 +27,31 @@ class _HomeScreenState extends State<HomeScreen> {
         Provider.of<LanguageProvider>(context, listen: false);
     List<Map<String, String>> allCards = languageProvider.getTranslatedCards();
 
+    final normalizedQuery = _normalize(query);
+
     setState(() {
       filteredCards = query.isEmpty
           ? allCards
-          : allCards
-              .where((card) =>
-                  card["title"]!.toLowerCase().contains(query.toLowerCase()) ||
-                  card["description"]!
-                      .toLowerCase()
-                      .contains(query.toLowerCase()))
-              .toList();
+          : allCards.where((card) {
+              final title = _normalize(card["title"]!);
+              final description = _normalize(card["description"]!);
+              return title.contains(normalizedQuery) ||
+                  description.contains(normalizedQuery);
+            }).toList();
     });
+  }
+
+  /// 🔹 Método auxiliar para normalizar cadenas (elimina tildes, convierte a minúsculas)
+  String _normalize(String input) {
+    return input
+        .toLowerCase()
+        .replaceAll(RegExp(r'[áàäâ]'), 'a')
+        .replaceAll(RegExp(r'[éèëê]'), 'e')
+        .replaceAll(RegExp(r'[íìïî]'), 'i')
+        .replaceAll(RegExp(r'[óòöô]'), 'o')
+        .replaceAll(RegExp(r'[úùüû]'), 'u')
+        .replaceAll(
+            RegExp(r'[^a-z0-9 ]'), ''); // elimina símbolos si es necesario
   }
 
   int _currentIndex = 0;
@@ -47,8 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => DedicatoriaPage()));
     } else if (index == 2) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => ConfiguracionPage()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => TestPage()));
     }
     setState(() {
       _currentIndex = index;
@@ -100,13 +114,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           builder: (context) => DedicatoriaPage())),
                 ),
                 ListTile(
-                  leading: Icon(Icons.settings, color: Colors.grey),
-                  title: Text(
-                      languageProvider.translate("settings")), // ✅ Traducido
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ConfiguracionPage())),
+                  leading: Icon(Icons.monitor_heart, color: Colors.grey),
+                  title:
+                      Text(languageProvider.translate("test")), // ✅ Traducido
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => TestPage())),
                 ),
               ],
             ),
@@ -137,8 +149,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   label:
                       languageProvider.translate("dedication")), // ✅ Traducido
               BottomNavigationBarItem(
-                  icon: Icon(Icons.settings),
-                  label: languageProvider.translate("settings")), // ✅ Traducido
+                  icon: Icon(Icons.monitor_heart),
+                  label: languageProvider.translate("test")), // ✅ Traducido
             ],
           ),
         );

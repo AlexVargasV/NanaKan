@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test/views/splash_screen.dart';
+import 'package:nanakan/views/splash_screen.dart';
 import 'providers/language_provider.dart';
 
 void main() {

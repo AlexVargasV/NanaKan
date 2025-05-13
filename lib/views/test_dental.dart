@@ -110,59 +110,14 @@ class _TestDentalPageState extends State<TestDentalPage> {
     ];
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100.0),
-        child: Container(
+      appBar: AppBar(
+        title: Text(lang.translate("dental_test")),
+        flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [Colors.blue.shade300, Colors.purple.shade300],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                blurRadius: 10,
-                offset: Offset(0, 4),
-              ),
-            ],
-          ),
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Container(
-                      padding: const EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.3),
-                        shape: BoxShape.circle,
-                      ),
-                      child:
-                          Icon(Icons.arrow_back, color: Colors.white, size: 28),
-                    ),
-                  ),
-                  Text(
-                    lang.translate("dental_test"),
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      shadows: [
-                        Shadow(
-                          color: Colors.black.withOpacity(0.2),
-                          blurRadius: 8,
-                          offset: Offset(2, 2),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: 40),
-                ],
-              ),
             ),
           ),
         ),
@@ -189,14 +144,15 @@ class _TestDentalPageState extends State<TestDentalPage> {
                       margin: const EdgeInsets.only(bottom: 12),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purple.shade400,
+                          backgroundColor: Colors.teal,
                           minimumSize: Size(double.infinity, 50),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
                         child: Text(answer["text"],
-                            style: TextStyle(fontSize: 16)),
+                            style:
+                                TextStyle(fontSize: 16, color: Colors.white)),
                         onPressed: () => answerQuestion(answer["points"]),
                       ),
                     );
@@ -207,8 +163,7 @@ class _TestDentalPageState extends State<TestDentalPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.health_and_safety,
-                        color: Colors.purple, size: 60),
+                    Icon(Icons.health_and_safety, color: Colors.teal, size: 60),
                     SizedBox(height: 20),
                     Text(
                       lang.translate("result"),
@@ -226,7 +181,7 @@ class _TestDentalPageState extends State<TestDentalPage> {
                       icon: Icon(Icons.arrow_back),
                       label: Text(lang.translate("back")),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.purple,
+                        backgroundColor: Colors.teal,
                         padding:
                             EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                         shape: RoundedRectangleBorder(

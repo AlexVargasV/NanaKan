@@ -104,9 +104,24 @@ class _TestCalculosPageState extends State<TestCalculosPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(lang.translate("renal_test")),
-        backgroundColor: Colors.teal,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue.shade300, Colors.purple.shade300],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
       ),
-      body: Padding(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.white, Colors.blue.shade50],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
         padding: const EdgeInsets.all(16.0),
         child: currentQuestion < questions.length
             ? Column(
@@ -116,62 +131,80 @@ class _TestCalculosPageState extends State<TestCalculosPage> {
                     "${lang.translate("question")} ${currentQuestion + 1}/${questions.length}",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 10),
-                  Text(
-                    questions[currentQuestion]["question"],
-                    style: TextStyle(fontSize: 16),
+                  SizedBox(height: 12),
+                  Card(
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(
+                        questions[currentQuestion]["question"],
+                        style: TextStyle(fontSize: 17, height: 1.4),
+                      ),
+                    ),
                   ),
                   SizedBox(height: 20),
                   ...questions[currentQuestion]["answers"]
                       .map<Widget>((answer) {
-                    return ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent,
-                        minimumSize: Size(double.infinity, 50),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 12.0),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blueAccent,
+                          minimumSize: Size(double.infinity, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
+                        child: Text(answer["text"],
+                            style:
+                                TextStyle(fontSize: 16, color: Colors.white)),
+                        onPressed: () => answerQuestion(answer["points"]),
                       ),
-                      child:
-                          Text(answer["text"], style: TextStyle(fontSize: 16)),
-                      onPressed: () => answerQuestion(answer["points"]),
                     );
                   }).toList(),
                 ],
               )
-            : Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.pets, color: Colors.teal, size: 60),
-                    SizedBox(height: 20),
-                    Text(
-                      lang.translate("result"),
-                      style:
-                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      getResultMessage(lang),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    SizedBox(height: 30),
-                    ElevatedButton.icon(
-                      icon: Icon(Icons.arrow_back),
-                      label: Text(lang.translate("back")),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
+            : Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.pets, color: Colors.teal, size: 60),
+                  SizedBox(height: 20),
+                  Text(
+                    lang.translate("result"),
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 10),
+                  Card(
+                    color: Colors.white,
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(
+                        getResultMessage(lang),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 16),
                       ),
-                      onPressed: () => Navigator.pop(context),
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 30),
+                  ElevatedButton.icon(
+                    icon: Icon(Icons.arrow_back),
+                    label: Text(lang.translate("back")),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ],
               ),
       ),
     );

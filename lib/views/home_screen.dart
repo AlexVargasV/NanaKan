@@ -78,49 +78,128 @@ class _HomeScreenState extends State<HomeScreen> {
         return Scaffold(
           appBar: CustomAppBar(onSearch: filterCards),
           drawer: Drawer(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: [
-                DrawerHeader(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.blue.shade300, Colors.purple.shade300],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
+            child: Consumer<LanguageProvider>(
+              builder: (context, languageProvider, child) {
+                final isDark = Theme.of(context).brightness == Brightness.dark;
+                final textColor = isDark ? Colors.white : Colors.black87;
+                final iconColor = isDark ? Colors.white70 : Colors.grey[800];
+
+                return Container(
+                  color: isDark ? Colors.grey[900] : Colors.grey[100],
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    children: [
+                      DrawerHeader(
+                        decoration: BoxDecoration(
+                          gradient: isDark
+                              ? LinearGradient(
+                                  colors: [
+                                    Colors.black87,
+                                    Colors.grey.shade800
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                )
+                              : LinearGradient(
+                                  colors: [
+                                    Colors.blue.shade300,
+                                    Colors.purple.shade300
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CircleAvatar(
+                              radius: 30,
+                              backgroundImage:
+                                  AssetImage("assets/images/kan1.jpg"),
+                            ),
+                            SizedBox(height: 12),
+                            Text(
+                              "Nana Kan",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              languageProvider.translate("menu"),
+                              style: TextStyle(
+                                color: Colors.white70,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.home, color: iconColor),
+                        title: Text(
+                          languageProvider.translate("home"),
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: textColor,
+                          ),
+                        ),
+                        onTap: () => Navigator.pop(context),
+                      ),
+                      Divider(thickness: 1, color: Colors.grey.shade400),
+                      ListTile(
+                        leading: Icon(Icons.favorite, color: Colors.pinkAccent),
+                        title: Text(
+                          languageProvider.translate("dedication"),
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: textColor,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DedicatoriaPage()),
+                          );
+                        },
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.monitor_heart, color: Colors.teal),
+                        title: Text(
+                          languageProvider.translate("test"),
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: textColor,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => TestPage()),
+                          );
+                        },
+                      ),
+                      Divider(thickness: 1, color: Colors.grey.shade400),
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(
+                          "© 2025 Nana Kan",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: isDark ? Colors.grey[400] : Colors.grey[700],
+                          ),
+                        ),
+                      )
+                    ],
                   ),
-                  child: Text(
-                    languageProvider
-                        .translate("menu"), // ✅ Traducido dinámicamente
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                ListTile(
-                  leading: Icon(Icons.home, color: Colors.blue),
-                  title:
-                      Text(languageProvider.translate("home")), // ✅ Traducido
-                  onTap: () => Navigator.pop(context),
-                ),
-                ListTile(
-                  leading: Icon(Icons.favorite, color: Colors.red),
-                  title: Text(
-                      languageProvider.translate("dedication")), // ✅ Traducido
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DedicatoriaPage())),
-                ),
-                ListTile(
-                  leading: Icon(Icons.monitor_heart, color: Colors.grey),
-                  title:
-                      Text(languageProvider.translate("test")), // ✅ Traducido
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TestPage())),
-                ),
-              ],
+                );
+              },
             ),
           ),
           body: ListView.builder(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/language_provider.dart';
-import 'test_calculos.dart'; // asegúrate de que el nombre coincida
+import 'test_calculos.dart';
 import 'test_dental.dart';
 
 class TestPage extends StatelessWidget {
@@ -10,14 +10,18 @@ class TestPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final languageProvider = Provider.of<LanguageProvider>(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
+      backgroundColor: isDark ? Colors.grey.shade900 : Colors.grey.shade100,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100.0),
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.blue.shade300, Colors.purple.shade300],
+              colors: isDark
+                  ? [Colors.grey.shade900, Colors.grey.shade800]
+                  : [Colors.blue.shade300, Colors.purple.shade300],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -35,7 +39,6 @@ class TestPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // 🔙 Botón de retroceso
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
@@ -48,7 +51,6 @@ class TestPage extends StatelessWidget {
                           Icon(Icons.arrow_back, color: Colors.white, size: 28),
                     ),
                   ),
-                  // Título centrado
                   Expanded(
                     child: Center(
                       child: Text(
@@ -68,29 +70,22 @@ class TestPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: 40), // Espacio para equilibrar visualmente
+                  SizedBox(width: 40),
                 ],
               ),
             ),
           ),
         ),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.white, Colors.grey.shade200],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _buildTestButton(
               context,
-              icon: Icons.medical_services,
-              color: Colors.teal,
+              icon: Icons.medical_services_outlined,
+              isDark: isDark,
               label: languageProvider.translate("renal_test"),
               onPressed: () {
                 Navigator.push(
@@ -102,8 +97,8 @@ class TestPage extends StatelessWidget {
             const SizedBox(height: 30),
             _buildTestButton(
               context,
-              icon: Icons.health_and_safety,
-              color: Colors.deepOrange,
+              icon: Icons.health_and_safety_outlined,
+              isDark: isDark,
               label: languageProvider.translate("dental_test"),
               onPressed: () {
                 Navigator.push(
@@ -121,23 +116,32 @@ class TestPage extends StatelessWidget {
   Widget _buildTestButton(
     BuildContext context, {
     required IconData icon,
-    required Color color,
+    required bool isDark,
     required String label,
     required VoidCallback onPressed,
   }) {
+    final Color bgColor = isDark ? Colors.deepPurple.shade400 : Colors.teal;
+    final Color textColor = Colors.white;
+
     return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
-        backgroundColor: color,
-        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        elevation: 6,
+        backgroundColor: bgColor,
+        padding: EdgeInsets.symmetric(vertical: 18, horizontal: 22),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+        elevation: 8,
+        shadowColor: Colors.black45,
         minimumSize: Size(double.infinity, 60),
       ),
-      icon: Icon(icon, size: 28, color: Colors.white),
+      icon: Icon(icon, size: 28, color: textColor),
       label: Text(
         label,
         style: TextStyle(
-            fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: textColor,
+        ),
       ),
       onPressed: onPressed,
     );

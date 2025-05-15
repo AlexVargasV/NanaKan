@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/language_provider.dart';
+import '../providers/theme_provider.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Function(String) onSearch;
@@ -23,14 +24,22 @@ class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     final languageProvider = Provider.of<LanguageProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.blue.shade400, Colors.purple.shade400],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        gradient: isDarkMode
+            ? LinearGradient(
+                colors: [Colors.grey.shade900, Colors.grey.shade800],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              )
+            : LinearGradient(
+                colors: [Colors.blue.shade400, Colors.purple.shade400],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.2),
@@ -45,7 +54,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // 🔹 Menú desplegable (Usamos Builder para evitar problemas de contexto)
+              // Menú lateral
               Builder(
                 builder: (context) => GestureDetector(
                   onTap: () => Scaffold.of(context).openDrawer(),
@@ -60,7 +69,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 ),
               ),
 
-              // 🔹 Campo de búsqueda o título
+              // Título o barra de búsqueda
               isSearching
                   ? Expanded(
                       child: TextField(
@@ -92,14 +101,14 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       ),
                     ),
 
-              // 🔹 Botón de búsqueda o cerrar búsqueda
+              // Botón de búsqueda
               GestureDetector(
                 onTap: () {
                   setState(() {
                     isSearching = !isSearching;
                     if (!isSearching) {
                       searchController.clear();
-                      widget.onSearch(""); // Restablecer búsqueda
+                      widget.onSearch("");
                     }
                   });
                 },
@@ -118,7 +127,18 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 ),
               ),
 
-              // 🔹 Selector de idioma con menú desplegable
+              // Botón de cambio de tema
+              IconButton(
+                icon: Icon(
+                  themeProvider.isDarkMode ? Icons.light_mode : Icons.dark_mode,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  themeProvider.toggleTheme(!themeProvider.isDarkMode);
+                },
+              ),
+
+              // Selector de idioma
               PopupMenuButton<String>(
                 onSelected: (String newLang) {
                   Provider.of<LanguageProvider>(context, listen: false)

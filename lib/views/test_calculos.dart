@@ -33,6 +33,7 @@ class _TestCalculosPageState extends State<TestCalculosPage> {
   @override
   Widget build(BuildContext context) {
     final lang = Provider.of<LanguageProvider>(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final List<Map<String, dynamic>> questions = [
       {
@@ -102,26 +103,67 @@ class _TestCalculosPageState extends State<TestCalculosPage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(lang.translate("renal_test")),
-        flexibleSpace: Container(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100.0),
+        child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.blue.shade300, Colors.purple.shade300],
+              colors: isDark
+                  ? [Colors.grey.shade900, Colors.grey.shade800]
+                  : [Colors.blue.shade300, Colors.purple.shade300],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.3),
+                blurRadius: 10,
+                offset: Offset(0, 4),
+              ),
+            ],
+          ),
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.3),
+                        shape: BoxShape.circle,
+                      ),
+                      child:
+                          Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                    ),
+                  ),
+                  Text(
+                    lang.translate("renal_test"),
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      shadows: [
+                        Shadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 6,
+                          offset: Offset(2, 2),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 40),
+                ],
+              ),
             ),
           ),
         ),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.white, Colors.blue.shade50],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: currentQuestion < questions.length
             ? Column(
@@ -129,18 +171,28 @@ class _TestCalculosPageState extends State<TestCalculosPage> {
                 children: [
                   Text(
                     "${lang.translate("question")} ${currentQuestion + 1}/${questions.length}",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: isDark ? Colors.white : Colors.black87,
+                    ),
                   ),
                   SizedBox(height: 12),
                   Card(
-                    elevation: 3,
+                    color: isDark ? Colors.grey[850] : Colors.white,
+                    elevation: 4,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16)),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Text(
                         questions[currentQuestion]["question"],
-                        style: TextStyle(fontSize: 17, height: 1.4),
+                        style: TextStyle(
+                          fontSize: 17,
+                          height: 1.4,
+                          color: isDark ? Colors.grey[200] : Colors.black87,
+                        ),
                       ),
                     ),
                   ),
@@ -151,15 +203,18 @@ class _TestCalculosPageState extends State<TestCalculosPage> {
                       padding: const EdgeInsets.only(bottom: 12.0),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent,
+                          backgroundColor: isDark
+                              ? Colors.deepPurple.shade400
+                              : Colors.blueAccent,
                           minimumSize: Size(double.infinity, 48),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
-                        child: Text(answer["text"],
-                            style:
-                                TextStyle(fontSize: 16, color: Colors.white)),
+                        child: Text(
+                          answer["text"],
+                          style: TextStyle(fontSize: 16, color: Colors.white),
+                        ),
                         onPressed: () => answerQuestion(answer["points"]),
                       ),
                     );
@@ -169,33 +224,48 @@ class _TestCalculosPageState extends State<TestCalculosPage> {
             : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.pets, color: Colors.teal, size: 60),
+                  Icon(Icons.pets,
+                      color: isDark ? Colors.purple.shade300 : Colors.teal,
+                      size: 60),
                   SizedBox(height: 20),
                   Text(
                     lang.translate("result"),
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: isDark ? Colors.white : Colors.black87,
+                    ),
                   ),
                   SizedBox(height: 10),
                   Card(
-                    color: Colors.white,
-                    elevation: 3,
+                    color: isDark ? Colors.grey[850] : Colors.white,
+                    elevation: 4,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16)),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Text(
                         getResultMessage(lang),
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: isDark ? Colors.grey[200] : Colors.black87,
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(height: 30),
                   ElevatedButton.icon(
-                    icon: Icon(Icons.arrow_back),
-                    label: Text(lang.translate("back")),
+                    icon: Icon(Icons.arrow_back, color: Colors.white),
+                    label: Text(
+                      lang.translate("back"),
+                      style: TextStyle(color: Colors.white),
+                    ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
+                      backgroundColor: isDark
+                          ? Colors.purple.shade400
+                          : Colors.teal.shade600,
                       padding:
                           EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                       shape: RoundedRectangleBorder(

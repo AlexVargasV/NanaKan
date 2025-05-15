@@ -48,12 +48,17 @@ class AnimatedCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final backgroundColor = isDarkMode ? Colors.grey[900] : Colors.white;
+    final titleColor = isDarkMode ? Colors.white : Colors.black87;
+    final descriptionColor = isDarkMode ? Colors.grey[300] : Colors.grey[600];
+
     return GestureDetector(
       onTap: () => _navigateToDetail(context),
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: backgroundColor,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -85,7 +90,7 @@ class AnimatedCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black87,
+                      color: titleColor,
                     ),
                   ),
                   SizedBox(height: 8),
@@ -95,7 +100,7 @@ class AnimatedCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.grey[600],
+                      color: descriptionColor,
                     ),
                   ),
                 ],

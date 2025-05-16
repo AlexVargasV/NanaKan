@@ -143,6 +143,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 onSelected: (String newLang) {
                   Provider.of<LanguageProvider>(context, listen: false)
                       .changeLanguage(newLang);
+                  widget.onSearch(""); // 🔄 Limpia búsqueda al cambiar idioma
                 },
                 icon: Icon(Icons.language, color: Colors.white, size: 28),
                 color: Colors.white,

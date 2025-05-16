@@ -17,16 +17,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final languageProvider =
-        Provider.of<LanguageProvider>(context, listen: false);
-    filteredCards = languageProvider.getTranslatedCards();
+    final languageProvider = Provider.of<LanguageProvider>(context);
+    final allCards = languageProvider.getTranslatedCards();
+    setState(() {
+      filteredCards = allCards;
+    });
   }
 
   void filterCards(String query) {
     final languageProvider =
         Provider.of<LanguageProvider>(context, listen: false);
-    List<Map<String, String>> allCards = languageProvider.getTranslatedCards();
-
+    final allCards = languageProvider.getTranslatedCards();
     final normalizedQuery = _normalize(query);
 
     setState(() {
@@ -204,13 +205,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           body: ListView.builder(
             padding: const EdgeInsets.all(16.0),
-            itemCount: translatedCards.length,
+            itemCount: filteredCards.length,
             itemBuilder: (context, index) {
               return AnimatedCard(
-                id: translatedCards[index]["id"]!,
-                title: translatedCards[index]["title"]!,
-                description: translatedCards[index]["description"]!,
-                imageAsset: translatedCards[index]["image"]!,
+                id: filteredCards[index]["id"]!,
+                title: filteredCards[index]["title"]!,
+                description: filteredCards[index]["description"]!,
+                imageAsset: filteredCards[index]["image"]!,
               );
             },
           ),

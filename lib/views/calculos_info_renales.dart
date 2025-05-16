@@ -145,17 +145,25 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
   @override
   Widget build(BuildContext context) {
     final languageProvider = Provider.of<LanguageProvider>(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       // 🔹 Aplicamos el mismo AppBar con gradiente
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100.0), // Ajuste de altura
         child: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.blue.shade300, Colors.purple.shade300],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+            gradient: isDark
+                ? LinearGradient(
+                    colors: [Colors.grey.shade900, Colors.grey.shade800],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  )
+                : LinearGradient(
+                    colors: [Colors.blue.shade300, Colors.purple.shade300],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.3),
@@ -249,7 +257,7 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black87,
+                            color: isDark ? Colors.white : Colors.black87,
                           ),
                         ),
                         SizedBox(height: 8),
@@ -271,28 +279,34 @@ class _CalculosInfoPageState extends State<CalculosInfoPage> {
                                 ),
                               );
                             },
-                            child: Hero(
-                              tag: section["image"]!,
-                              child: Image.asset(
-                                section["image"]!,
-                                height: 200,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                              )
-                                  .animate(
-                                      onPlay: (controller) =>
-                                          controller.repeat()) // Efecto suave
-                                  .scale(
-                                    begin: Offset(1, 1),
-                                    end: Offset(1.1, 1.1),
-                                    duration: Duration(seconds: 1),
-                                  )
-                                  .then()
-                                  .scale(
-                                    begin: Offset(1.1, 1.1),
-                                    end: Offset(1, 1),
-                                    duration: Duration(seconds: 1),
+                            child: Stack(
+                              children: [
+                                Hero(
+                                  tag: section["image"]!,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Image.asset(
+                                      section["image"]!,
+                                      height: 200,
+                                      width: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
+                                ),
+                                Positioned(
+                                  bottom: 12,
+                                  right: 12,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.black.withOpacity(0.5),
+                                      shape: BoxShape.circle,
+                                    ),
+                                    padding: const EdgeInsets.all(8),
+                                    child: Icon(Icons.zoom_in,
+                                        color: Colors.white, size: 24),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                       ],

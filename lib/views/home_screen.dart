@@ -5,6 +5,7 @@ import '../widgets/custom_app_bar.dart';
 import '../widgets/animated_card.dart';
 import 'test_page.dart';
 import 'dedicatoria_page.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -139,7 +140,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       ListTile(
-                        leading: Icon(Icons.home, color: iconColor),
+                        leading: SvgPicture.asset(
+                          'assets/svg/home.svg',
+                          height: 26,
+                          width: 26,
+                          colorFilter: ColorFilter.mode(
+                            isDark ? Colors.white : Colors.black,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                         title: Text(
                           languageProvider.translate("home"),
                           style: TextStyle(
@@ -151,7 +160,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Divider(thickness: 1, color: Colors.grey.shade400),
                       ListTile(
-                        leading: Icon(Icons.favorite, color: Colors.pinkAccent),
+                        leading: SvgPicture.asset(
+                          'assets/svg/dedicatoria.svg',
+                          height: 26,
+                          width: 26,
+                          colorFilter: ColorFilter.mode(
+                            isDark ? Colors.white : Colors.black,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                         title: Text(
                           languageProvider.translate("dedication"),
                           style: TextStyle(
@@ -169,7 +186,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                       ListTile(
-                        leading: Icon(Icons.monitor_heart, color: Colors.teal),
+                        leading: SvgPicture.asset(
+                          'assets/svg/test.svg',
+                          height: 26,
+                          width: 26,
+                          colorFilter: ColorFilter.mode(
+                            isDark ? Colors.white : Colors.black,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                         title: Text(
                           languageProvider.translate("test"),
                           style: TextStyle(
@@ -222,14 +247,41 @@ class _HomeScreenState extends State<HomeScreen> {
             unselectedItemColor: Colors.grey,
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
+                  icon: SvgPicture.asset(
+                    'assets/svg/home.svg',
+                    height: 24,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : const Color.fromARGB(255, 14, 13, 13),
+                      BlendMode.srcIn,
+                    ),
+                  ),
                   label: languageProvider.translate("home")), // ✅ Traducido
               BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite),
+                  icon: SvgPicture.asset(
+                    'assets/svg/dedicatoria.svg',
+                    height: 24,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : const Color.fromARGB(255, 2, 2, 2),
+                      BlendMode.srcIn,
+                    ),
+                  ),
                   label:
                       languageProvider.translate("dedication")), // ✅ Traducido
               BottomNavigationBarItem(
-                  icon: Icon(Icons.monitor_heart),
+                  icon: SvgPicture.asset(
+                    'assets/svg/test.svg',
+                    height: 24,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : const Color.fromARGB(255, 2, 2, 2),
+                      BlendMode.srcIn,
+                    ),
+                  ),
                   label: languageProvider.translate("test")), // ✅ Traducido
             ],
           ),

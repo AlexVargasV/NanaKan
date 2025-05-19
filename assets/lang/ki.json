@@ -1,0 +1,173 @@
+{
+    "home": "Wasi panka",
+    "settings": "Rurana kamachiy",
+    "renal_test": "Ñawi allikuy shamuy riksichina",
+    "dental_test": "Simi kallkupi allikuy shamuy riksichina",
+    "test": "Yachachina purina",
+    "dedication": "Yuyaykuna",
+    "loading": "Kachashkamanda...",
+    "change_language": "Shimikuna wakman tukuy",
+    "cancer_gatos": "Misi kanki",
+    "carcinoma_descripcion": "Sillu chakra ruray kanki.",
+    "card_cancer": "Misi kanki",
+    "card_cancer_desc": "Sillu chakra ruray kanki.",
+    "card_calculos": "Ñawi rumikuna",
+    "card_calculos_desc": "Imashina misi runakunata afectan.",
+    "card_dentales": "Simi kallku unaykachaykuna",
+    "card_dentales_desc": "Salla kallku, simipi llakikuna",
+    "calculos_que_son": "⚠️ ¿Imata misi ñawi rumikuna kanki?",
+    "calculos_que_son_desc": "Misi ñawi rumikuna, ñawi ukupi rumi tukuykuna, sacha rumi tukuymi, mana willakuna chay urina ñanpi shinallatak ñawipi rikurina. Misi runakunapi, 98% kay rumikuna calcium oxalato-manta kan.\n\nCalcium oxalato rumi sacha:\n• Monohidrato: Aswan oxalato urinamanda (hiperoxaluria)\n• Dihidrato: Aswan calcium urinamanda (hipercalciuria)\n\nMisi runakunapi, tukuy rumikuna monohidrato-mi, chaymanta oxalato aswanmi tukuykunata kamachin.",
+
+    "calculos_formacion": "¿Imarayku ñawi rumikuna rurakun?",
+    "calculos_formacion_desc": "Hatun causakuna:\n\n• Mikhuy: Siki mikuylla o urina ashkaka chinkachik mikuykunamanta.\n• Ruray kallpachakuna: Calcium ukucha oxalato aswanmi.\n• Ayllu chakikuna: Shinallatak runakuna aswan llakikuna kan.\n• Urina onqokuna: Urinamanda shuk onqokuna tukuykunata karunchik.",
+    "calculos_riesgo": "Llakikuna riksichina",
+    "calculos_riesgo_desc": "• Siki mikuylla: Yaku aswan mana mikunki, urina riksichin.\n• Uray warmi michak: Ñawi ñan sinchik, chaymanta ñawi chinkay aswanmi.\n• Runa chakikuna: Persa, Himalaya, Birmano, Ragdoll, American Shorthair, Scottish Fold.\n• Ruray kallpachakuna: Hipercalcemia, hiperoxaluria.",
+
+    "calculos_signos": "¿Imashina riksinki misi ñawi rumikuna kan shina?",
+    "calculos_signos_desc": "Riksichik ima:\n\n• Ñawi llakiy o sinchi urinamuy.\n• Yawarwan urina rikuy.\n• Siki pichana aswan.\n• Mana mikuy, llakikuna o puñuylla kawsay.\n• Uma ukupi puñuykuna o llankiy.\n\n⚠️ Rikuykushka kashkaqa, hamuy yachachik warmiman chaymanta.",
+
+    "calculos_prevencion": "Amachay: misi kawsay pachamanta",
+    "calculos_prevencion_desc": "Wawa misi (1 watakama):\n• Allin mikuy: Yaku mikuy, sacha kallpawan.\n• Yaku allinkachiy: Kikin yaku ashkaka rikuy.\n• Yachachik riksichikuna: Onqokuna ñawpakta yachay.\n\nHatun misi (1-7 wata):\n• Siki mikuyta yaku mikuywan tinkuchiy: Yaku rikuy allinkachiy.\n• Michak mikuy: Kikin michak misikuna mikuyta chaskinkapak.\n\nRukuy misi (>7 wata):\n• Ñawi allikuy mikuy: Ñawi llakikuna mana aswan rurachina.\n• Allikuy riksichikuna: Ñawi, urina llakikuna chaskiykuna.",
+    "dentales_que_son": "⚠️ ¿Imata misi simipi kallku onqokuna kanki?",
+    "dentales_que_son_desc": "Simi kallkupi onqokuna misi runakunapi aswan riksishkakuna kan, shinallatak, aswan kutilla mana rikushkachu, chaykunamanta sinchi nanay o llakikuna shamupakmanda rikurinkapakmi. Salla kallku ukucha, kikinkuna llakikuna rurachin, kallku chinkayta, ukupi onqoyta karunchikmi mana aswan kushkalla upalla chinkapishka.",
+
+    "dentales_periodontal": "¿Imata periodontal onqoy kanki?",
+    "dentales_periodontal_desc": "Kay onqoymi simi kallkupi kallku ñawpita kallari, uraykaman sinchi kushkalla nanay ruraymi. Salla kallku, kikinkuna paktachik rurakuchkan. Mana aswan upalla riksichishpa, chay onqoymi kallku chinkayta, sinchi ukupi onqoyta, shinallatak umanaka, ñawi, ñawi ukupi allikuyta karunchikmi.",
+
+    "dentales_etapas": "Periodontal onqoy ñawpa kawsaykuna",
+    "dentales_etapas_desc": "1️⃣ Gingivitis (Ñawpa 1 - kutichiy yachay): Simi kallkupi nanay kachkan, mana kallku tullu chinkayta. Rikchaykuna: puka kallku, aswan allin mana mikuymu.\n\n2️⃣ Ñawpa periodontitis (Ñawpa 2): Sinchi kallkupi nanay, kikinkuna tullu urayman chinkarishka. Rikchaykuna: aswan mana alli asna, kallku yawar, mikushpa o simi pitishpa.\n\n3️⃣ Ñawpa periodontitis (Ñawpa 3): Tullu chinkarishka, kikinkuna tullu ukupi ukucha. Rikchaykuna: nanay, aswan yapamuy, kallku chinkay, mana mikushka.\n\n4️⃣ Ñawpa periodontitis sinchi (Ñawpa 4 - mana kutichik): Mana aswan ukupi onqoy, sinchi kallku tullu chinkarishka. Ukupi churakuna, llakikuna yurakman shamunkapakmi.",
+
+    "dentales_riesgo": "Riksiy llakikuna",
+    "dentales_riesgo_desc": "• Mana simi kallku pichana: salla kallku aswan tukuchin.\n• Mana alli mikuy: siki mikuy sapa mikushka sarrotawan tukuyta kallkupi churin.\n• Ayllukunapa llakikuna: Persa, Siamés shinaka runakunapi aswan riksiy.\n• Rukuy pacha: misi 5 wata chaymanta riksiy aswanmi.\n• Mana alli kallpawan: FeLV, FIV rikuchik onqokuna kallkupipish shamun.",
+
+    "dentales_signos": "Misi runakunapi riksichik ima kallkupi",
+    "dentales_signos_desc": "🚨 Rikchaykuna:\n\n📌 Mana alli asna (halitosis).\n📌 Puka kallku, kushkalla, yawarwan kallkupi.\n📌 Mikushka mana alli, siki mikuyta munashka.\n📌 Aswan yapamuy (wakinmi yawarwan).\n📌 Uyakipi rikurishpa, uma muyurishpa.\n📌 Kallku mana sinchiklla o chinkashka.\n📌 Mikhuna achikman shamushpa, pukllaylla.\n\n🔴 Rikuy: Misi runakuna nanay mana rikuchinkuchu, chaymanta ama llakikuna ñawpapi rikurichu.",
+
+    "dentales_prevencion": "Amachay, misi kawsay pachamanta",
+    "dentales_prevencion_desc": "🐱 Wawa misi (1 watakama):\n• Simi kallku pichana aslla asllawan yachachiy.\n• Allin mikuy, kallku riksichina mikhuykunawan.\n• Wata sapa yachachik riksichina.\n\n🐈 Hatun misi (1-7 wata):\n• Simi kallku pichana kikin pacha (sapa semana 3 kutilla).\n• Allin mikuy, kallku riksichina mikhuy, mikuy achka.\n• Riksichik warmi: 6-12 killapi.\n\n🐈‍⬛ Rukuy misi (>7 wata):\n• Kallku pichana sinchi yachachik warmiwan.\n• Yaku ukupi yachachik churakuna, kallku gel shinaka.\n• Allin kawsay riksichikuna, kallkupi onqokuna ñawpapi yachaykuna.",
+    "warning": "Yuyariy",
+    "btn_cancel": "Paway",
+    "btn_acept": "Arí",
+    "carrousel_message": "Ñawpakama onqokuna riksichik killka kancha",
+    "graphic_warning": "Kay killkakuna ukupi sinchi ñawiyachishka ima kan. ¿Riksiyta munankichu?",
+
+    "carcinoma_title": "Misi kanki",
+    "carcinoma_que_es": "⚠️ ¿Imata misi runapi sillu chakra kanki (Carcinoma)?",
+    "carcinoma_que_es_desc": "Sillu chakra kanki (CCE) misi runakunapi sinchi onqoymi, kikinkunata yachachik warmi llakikunata riksichin kay onqoyqa sinchi ñawpakama mana rikurishka karanmi. Kay kanki aswanmi rukuy misikunata apamun, puka aycha, sillu kallma, ñawi, simipi tukuyta karunchik.",
+
+    "factores_riesgo": "Riksiy llakikuna",
+    "factores_riesgo_desc": "⭐ Inti punchapi rikurina: Inti sinchi kanchapi rikurishka misi runakunata kanki rurachin.\n\n★ Mana llukchiykuna: Puka aycha mana samaywan karan misi runakuna aswan llakikuna kan.\n\n★ Siki ñañu ñañu michak: Mana ashka millmayuq misi runakuna ñawi, ñawi ukupi ñawiyachikmi.\n\n★ Papiloma virus: Kay virus ñawpaqta shamushpa misi runakunata aswan riksichin.\n\n★ Mana kallpawan kallma: Mana allin kallpayuq runa o ñawpa puka aycha onqokuna aswan chinkayta rurachin.",
+
+    "zonas_afectadas": "• Llakikuna hatun kuti",
+    "zonas_afectadas_desc": "⭐ Rinri: Rinripi lamar panka ñawpakuna, 72% rikurinkapakmi.\n\n★ Ñawi ukupi: Kay lamar ñawpi chaykunapi 22% kaqmi.\n\n★ Simi ñawpa: Simipi ukupi, sinchi mana aswan rikurishka, 6% kaqmi.",
+
+    "tipos_cce": "✨ CCE rikchaykuna",
+    "tipos_cce_desc": "⭐ CCE Simi: Kay kanki misi simiman shamun, mikuna llakikuna tukuchin.\n\n★ CCE Ñawi: Ñawiman shamun, kushkalla rikchay, ñawi rikchayta tukuchin.\n\n★ CCE Aycha chakra (CCSC): Puka aychaman shamun, sinchi mana millma sutinmi, rinri, ñawi, simipi aswan rikurishka.",
+
+    "prevencion": "✔️ Amachay, ñawpakama rikuy",
+    "prevencion_desc": "Misi runata inti punchawan sinchi rikuchishpa mana karunalla puriy. Riksichiy warmiman apachiy sapa kutilla, kay onqokuna ñawpakama yachakuchun. Chaymanta, allin hamutaywan alli kallpawan riksichina kamachiykuna.",
+
+    "dedicatoria_title": "Yuyaykuna",
+    "dedicatoria_heading": "Kanpa yuyayman",
+    "dedicatoria_text": "Kay yachachik apachikmanta rurashka Kan ñukapa munaycha misi wawaman yuyaywanmi shamurka, paymi kay onqoymantam ñukanchikta shuyachirka.\n\nPaypa miauykuna, ñañukuna, munaywanmi ñukanchik kawsayta fillkarirka. Kunankama, paypa yachaymi kaypi kuyaywan killkashka rimaykuna ukupi kawsan, wak misi runakunata allikachinampak.\n\nSuma ñañuy, kikin kawsayta ñawpakama kanchikpakmi. 💙",
+    "dedicatoria_gallery": "Kanpa yuyaykuna 🐾",
+    "dedicatoria_back": "Wasi pankaman kutiy",
+    "question": "Tapuy",
+    "result": "Rikuykuna",
+    "back": "Kutiy",
+
+    "test_q1": "¿Imashina mikuyta misi runayki sapa pacha mikun?",
+    "test_q1_a1": "🟢 Yaku mikuy",
+    "test_q1_a2": "🟡 Wak mikuy chay mikuy",
+    "test_q1_a3": "🔴 Siki mikuylla",
+
+    "test_q2": "¿Imana yakuta upin misi runayki sapa punchaw?",
+    "test_q2_a1": "🟢 Aswanmi, yaku ñawpakuna kan",
+    "test_q2_a2": "🟡 Wak punchaw mana aswan upin",
+    "test_q2_a3": "🔴 Aslla yakuta upin",
+
+    "test_q3": "¿Misi runayki shuk aylluman kan kanki?",
+    "test_q3_a1": "🟢 Mana, ukatachu mestizo kani",
+    "test_q3_a2": "🟡 Mana yachanichu",
+    "test_q3_a3": "🔴 Arí, shuk riksichik ayllumanta kan",
+
+    "test_q4": "¿Misi runayki michak warmi kani?",
+    "test_q4_a1": "🟢 Mana",
+    "test_q4_a2": "🟡 Arí, shinapash mana urina llakikuna kanchu",
+    "test_q4_a3": "🔴 Arí, urina llakikuna ñawpika kan",
+
+    "test_q5": "¿Ñukaka misi runayki urinamunachikllachu?",
+    "test_q5_a1": "🟢 Mana",
+    "test_q5_a2": "🟡 Wak punchaw sinchilla shamun",
+    "test_q5_a3": "🔴 Arí, miau rimani, aswan tukuyta urinamun",
+
+    "test_q6": "¿Urina ukupi yawar rikurirkachu?",
+    "test_q6_a1": "🟢 Mana",
+    "test_q6_a2": "🟡 Arenapi kaykunata yachanimi",
+    "test_q6_a3": "🔴 Arí, yawarmi rikurikun",
+
+    "test_q7": "¿Paypa kawsay shutichirka kashka?",
+    "test_q7_a1": "🟢 Mana",
+    "test_q7_a2": "🟡 Aslla llankachirka",
+    "test_q7_a3": "🔴 Sinchi mana alli, siki pichani",
+
+    "test_q8": "¿Caja ukpimanta wawrayku urinamun?",
+    "test_q8_a1": "🟢 Mana",
+    "test_q8_a2": "🟡 Wak punchaw riksin",
+    "test_q8_a3": "🔴 Arí, sapa punchaw chayrikun",
+    "test_result_low": "🟢 Aslla llakikuna: Allin kawsayta kawsanki. Kikin mikuyta, yakuta shuma kachunchik.",
+    "test_result_moderate": "🟡 Llakikuna ukucha: Yaku mikuyta alli kachiy, yachachik warmiman hamuy si shutichikmi.",
+    "test_result_high": "🟠 Llakikuna hatun: Riksichik ima karan. Yachachik warmiman hamuyta kamachin.",
+    "test_result_critical": "🔴 Sinchi llakikuna: Rikuykuna sinchi onqoywan. Yachachik warmiman ñawpakama hamuy.",
+    "dtest_q1": "¿Sapa p’unchaw simi kallkunata pichanki misi runaykita?",
+    "dtest_q1_a1": "🟢 Arí, semana shuk kimsa kutillami.",
+    "dtest_q1_a2": "🟡 Wakpachalla, mana sapa p’unchawchu.",
+    "dtest_q1_a3": "🔴 Mana, janpim pichanichu.",
+
+    "dtest_q2": "¿Misi runayki siki mikhuna o kallku mikuyta mikun?",
+    "dtest_q2_a1": "🟢 Arí, croquetakunata mikun o kallku mikhuy.",
+    "dtest_q2_a2": "🟡 Yaku mikuymi mikun, shinapash wakpachalla siki mikuy.",
+    "dtest_q2_a3": "🔴 Yaku mikuylla mikun.",
+
+    "dtest_q3": "¿Kawsay watapi shukpi misi runaykita yachachik warmiman kallku pichanawan apashkankichu?",
+    "dtest_q3_a1": "🟢 Arí.",
+    "dtest_q3_a2": "🟡 Mana, shinapash ishkay wata ñawpika arí.",
+    "dtest_q3_a3": "🔴 Mana arí, ni ima kutilla.",
+
+    "dtest_q4": "¿Mana alli asna rikurirkachu misi runaykipi?",
+    "dtest_q4_a1": "🟢 Mana, paypa asnami normalmi.",
+    "dtest_q4_a2": "🟡 Wakpachalla mana alli asnamanta.",
+    "dtest_q4_a3": "🔴 Arí, sinchi ch’usku asnami kan.",
+
+    "dtest_q5": "¿Paypa simita rikushpa, imashina kallkuman rikunki?",
+    "dtest_q5_a1": "🟢 Rosadokuna, alli kallkupi kan.",
+    "dtest_q5_a2": "🟡 Wak kallkupi puka o kushkalla kan.",
+    "dtest_q5_a3": "🔴 Sinchi puka, kushkalla o yawarwan kallkupi.",
+
+    "dtest_q6": "¿Kallkuman salla kallku o sacha pishikuna rikurirkachu?",
+    "dtest_q6_a1": "🟢 Mana, kallkupi limpiomi.",
+    "dtest_q6_a2": "🟡 Wak kallkupi q’illu salla kallku kan.",
+    "dtest_q6_a3": "🔴 Sinchi yuraqlla, yana salla kallku kallkuman.",
+
+    "dtest_q7": "¿Paymi sinchi yapamushpa kanchu, yakumanta?",
+    "dtest_q7_a1": "🟢 Mana.",
+    "dtest_q7_a2": "🟡 Wakpachalla yapamun.",
+    "dtest_q7_a3": "🔴 Arí, sinchi yapamun.",
+
+    "dtest_q8": "¿Paymi shuk lado mikunllachu o mana mikuyta munanchu?",
+    "dtest_q8_a1": "🟢 Mana, normalmi mikun.",
+    "dtest_q8_a2": "🟡 Wakpachalla mikushpa mana kushilla rikun.",
+    "dtest_q8_a3": "🔴 Arí, mikuyta mana mikun o mikuyta chinkachin.",
+
+    "dtest_q9": "¿Shuk kallkuta chinkarirkachu o llamp’achik rikunki?",
+    "dtest_q9_a1": "🟢 Mana, tukuy kallkunata kanmi.",
+    "dtest_q9_a2": "🟡 Mana allilla yachanichu, shinapash shuk ima chaykan.",
+    "dtest_q9_a3": "🔴 Arí, shuk kallkuta chinkarka o llamp’achikmi rikun.",
+    "dtest_result_low": "🟢 Allin kallku kawsay 🦷\n✅ Kikin misi kallkupi mana periodontitis rikuykuna kanchu. Kawsayta riksichiy kallku pichanaywan, allin mikuywanmi.",
+
+    "dtest_result_moderate": "🟡 Riksiy ukucha ⚠\n🧐 Wak rikuykunamanta periodontitis ñawpakama kan. Kallkuta allinkachiy, yachachik warmiman hamuy.",
+
+    "dtest_result_high": "🟠 Yachachik kallpata munan 🚨\n⚠ Riksiy sinchi periodontitis ukupi. Kallku pichanakuna yachachik warmipi ruraykunata munan.",
+
+    "dtest_result_critical": "🔴 Sinchi riksiy 🆘\n🚨 Misi runayki kallkupi sinchi onqokuna kan. Ñawpakama yachachik warmiman hamuyta munan."
+}

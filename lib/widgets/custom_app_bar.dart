@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/language_provider.dart';
 import '../providers/theme_provider.dart';
+import '../widgets/custom_svg_icon.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Function(String) onSearch;
@@ -119,11 +120,13 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     color: Colors.white.withOpacity(0.2),
                     shape: BoxShape.circle,
                   ),
-                  child: Icon(
-                    isSearching ? Icons.close : Icons.search,
-                    color: Colors.white,
-                    size: 28,
-                  ),
+                  child: isSearching
+                      ? Icon(Icons.close, color: Colors.white, size: 28)
+                      : CustomSvgIcon(
+                          assetPath: 'assets/svg/search.svg',
+                          size: 28,
+                          color: Colors.white,
+                        ),
                 ),
               ),
 
@@ -146,7 +149,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   widget.onSearch(""); // 🔄 Limpia búsqueda al cambiar idioma
                 },
                 icon: Icon(Icons.language, color: Colors.white, size: 28),
-                color: Colors.white,
+                color: isDarkMode ? Colors.grey[900] : Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -170,6 +173,19 @@ class _CustomAppBarState extends State<CustomAppBar> {
                         Icon(Icons.flag, color: Colors.blue),
                         SizedBox(width: 8),
                         Text("English"),
+                        if (languageProvider.locale.languageCode == 'en')
+                          Icon(Icons.check, color: Colors.green),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: 'ki',
+                    child: Row(
+                      children: [
+                        Icon(Icons.flag,
+                            color: const Color.fromARGB(255, 188, 226, 18)),
+                        SizedBox(width: 8),
+                        Text("Kichwa"),
                         if (languageProvider.locale.languageCode == 'en')
                           Icon(Icons.check, color: Colors.green),
                       ],

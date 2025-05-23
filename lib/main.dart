@@ -1,10 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:nanakan/views/splash_screen.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import 'views/splash_screen.dart';
 import 'providers/language_provider.dart';
 import 'providers/theme_provider.dart';
+import 'package:nanakan/providers/notification_service.dart'; //
 
-void main() {
+// Plugin de notificaciones
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+Future<void> initializeNotifications() async {
+  // Configuración Android
+  const AndroidInitializationSettings androidSettings =
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+
+  // Configuración iOS (Darwin)
+  final DarwinInitializationSettings iosSettings = DarwinInitializationSettings(
+    requestAlertPermission: true,
+    requestBadgePermission: true,
+    requestSoundPermission: true,
+  );
+
+  // Inicialización general
+  final InitializationSettings initSettings = InitializationSettings(
+    android: androidSettings,
+    iOS: iosSettings,
+  );
+
+  await flutterLocalNotificationsPlugin.initialize(initSettings);
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeNotifications(); // ✅ Inicializa
+  await showRepeatedNotification(); // ✅ Activa repetición cada minuto
+
   runApp(
     MultiProvider(
       providers: [
@@ -29,7 +61,7 @@ class ModernApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       locale: languageProvider.locale,
-      themeMode: themeProvider.themeMode, // 👈 modo claro u oscuro dinámico
+      themeMode: themeProvider.themeMode,
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Colors.grey[850],

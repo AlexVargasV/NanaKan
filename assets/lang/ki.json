@@ -169,5 +169,102 @@
 
     "dtest_result_high": "🟠 Yachachik kallpata munan 🚨\n⚠ Riksiy sinchi periodontitis ukupi. Kallku pichanakuna yachachik warmipi ruraykunata munan.",
 
-    "dtest_result_critical": "🔴 Sinchi riksiy 🆘\n🚨 Misi runayki kallkupi sinchi onqokuna kan. Ñawpakama yachachik warmiman hamuyta munan."
+    "dtest_result_critical": "🔴 Sinchi riksiy 🆘\n🚨 Misi runayki kallkupi sinchi onqokuna kan. Ñawpakama yachachik warmiman hamuyta munan.",
+    "app_name": "Nana Kan",
+
+    "notification_1_title": "Michi Káncer",
+    "notification_1_body": "¿Yachakuy? Michi riku ni kuyashka ima ruku kayna káncer kan. Rimay kanki michi sunquta maskaylla cada killka.",
+
+    "notification_2_title": "Michikuna Riksina Yaku",
+    "notification_2_body": "¿Michi yaku mana upiychu? Yaku pukllana apay. Kushi yaku kunan!",
+
+    "notification_3_title": "Michi Ñawpa Riku",
+    "notification_3_body": "Michikuna rimay mana alli. Ñawpa riku imashina chay riku kayna káncer rimay.",
+
+    "notification_4_title": "Michi Káncer",
+    "notification_4_body": "Inti mana alli. Michi ruku yurak ñawi, mana chayllapi intiy kawsaylla.",
+
+    "notification_5_title": "Michikuna Riksina Yaku",
+    "notification_5_body": "Ali yaku mana upichina, chakana riksina. Allin mikuy apay.",
+
+    "notification_6_title": "Michi Ñawpa Riku",
+    "notification_6_body": "Michikuna rimay, machka yana, amañaymi, wasi yachachina.",
+
+    "notification_7_title": "Michi Káncer",
+    "notification_7_body": "Ñawi llaki mana alli. Yachachina hamuy.",
+
+    "notification_8_title": "Michikuna Riksina Yaku",
+    "notification_8_body": "Michi rimay urinaykunata, riksina tukuy.",
+
+    "notification_9_title": "Michi Ñawpa Riku",
+    "notification_9_body": "Ñawpa limpina alli, rimaywan rimachik.",
+
+    "notification_10_title": "Michi Káncer",
+    "notification_10_body": "Yurak michi káncer kawsay. Yachaykuna riksina kanki.",
+
+    "notification_11_title": "Michikuna Riksina Yaku",
+    "notification_11_body": "Kari michi riksina allina yaku. Yachachina!",
+
+    "notification_12_title": "Michi Ñawpa Riku",
+    "notification_12_body": "Ñawpa llamkashka mana alli kawsay.",
+
+    "notification_13_title": "Michi Káncer",
+    "notification_13_body": "Ñawi mana chaskina. Ñawi maskachina chaylla.",
+
+    "notification_14_title": "Michikuna Riksina Yaku",
+    "notification_14_body": "Llaki yaku riksina allina kawsay. Wasipi llakikuna riksina alli.",
+
+    "notification_15_title": "Michi Ñawpa Riku",
+    "notification_15_body": "Michi rimay mana alli, imashina mikuy.",
+
+    "notification_16_title": "Michi Káncer",
+    "notification_16_body": "Kallana wasipi waskashka michi sunquta. Kawsay alli.",
+
+    "notification_17_title": "Michikuna Riksina Yaku",
+    "notification_17_body": "Yaku kawsay chaylla kawsaykunata apay.",
+
+    "notification_18_title": "Michi Ñawpa Riku",
+    "notification_18_body": "Ñawi kawsay wasipi riksina. Ñawi maskachina.",
+
+    "notification_19_title": "Michi Káncer",
+    "notification_19_body": "Ñawi maskachina mana alli. Mana maskachina.",
+
+    "notification_20_title": "Michikuna Riksina Yaku",
+    "notification_20_body": "Yaku aswan alli mikuyta apay.",
+
+    "notification_21_title": "Michi Ñawpa Riku",
+    "notification_21_body": "Michi hatun kawsay ñawpa riku yachachina.",
+
+    "notification_22_title": "Michi Káncer",
+    "notification_22_body": "Ñawi limpiashka. Alli sunquta kawsay.",
+
+    "notification_23_title": "Michikuna Riksina Yaku",
+    "notification_23_body": "Yaku llakina. Mana chaylla yachachina.",
+
+    "notification_24_title": "Michi Ñawpa Riku",
+    "notification_24_body": "Mikuy mana alli ñawpa.",
+
+    "notification_25_title": "Michi Káncer",
+    "notification_25_body": "Michi rimay llaki. Yachachina.",
+
+    "notification_26_title": "Michikuna Riksina Yaku",
+    "notification_26_body": "Wasipi yaku llaki rimay.",
+
+    "notification_27_title": "Michi Ñawpa Riku",
+    "notification_27_body": "Michi rimay aswan yaku. Ñawi kawsay.",
+
+    "notification_28_title": "Michi Káncer",
+    "notification_28_body": "Ñawi maskachina. Wasipi yachachina.",
+
+    "notification_29_title": "Michikuna Riksina Yaku",
+    "notification_29_body": "Yaku rimay alli. Urina yachachina.",
+
+    "notification_30_title": "Michi Ñawpa Riku",
+    "notification_30_body": "Alli rimay. Michi kawsay alli rimay.",
+
+    "notification_permission_title": "Notifikasyun tukuy mana rikuykachun",
+    "notification_permission_desc": "Kuska kawsaykita alli ruranapaq, notifikasyun tukuynin chaskinimi kallpachkani.",
+    "btn_allow_notifications": "Notifikasyun tukuynin rikuykachun",
+    "btn_skip": "Mana rikuykachun chayllaña"
+
 }

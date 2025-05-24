@@ -140,13 +140,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
                   themeProvider.toggleTheme(!themeProvider.isDarkMode);
                 },
               ),
-
               // Selector de idioma
               PopupMenuButton<String>(
-                onSelected: (String newLang) {
-                  Provider.of<LanguageProvider>(context, listen: false)
-                      .changeLanguage(newLang);
-                  widget.onSearch(""); // 🔄 Limpia búsqueda al cambiar idioma
+                onSelected: (String newLang) async {
+                  final languageProvider =
+                      Provider.of<LanguageProvider>(context, listen: false);
+                  await languageProvider.changeLanguage(newLang);
+                  // 🔄 Opcional: si quieres refrescar la UI aquí (aunque ChangeNotifier ya lo hace)
+                  setState(() {});
+                  widget.onSearch(""); // 🔄 Limpia búsqueda si es necesario
                 },
                 icon: Icon(Icons.language, color: Colors.white, size: 28),
                 color: isDarkMode ? Colors.grey[900] : Colors.white,
@@ -186,7 +188,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                             color: const Color.fromARGB(255, 188, 226, 18)),
                         SizedBox(width: 8),
                         Text("Kichwa"),
-                        if (languageProvider.locale.languageCode == 'en')
+                        if (languageProvider.locale.languageCode == 'ki')
                           Icon(Icons.check, color: Colors.green),
                       ],
                     ),

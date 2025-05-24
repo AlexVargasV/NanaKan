@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../widgets/image_zoom_widget.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import '../providers/language_provider.dart';
 import 'package:provider/provider.dart';
 //import 'package:lottie/lottie.dart';
@@ -195,19 +194,26 @@ class _DentalesInfoPageState extends State<DentalesInfoPage> {
                     ),
                   ),
                   // Título centrado
-                  Text(
-                    languageProvider.translate("card_dentales"),
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      shadows: [
-                        Shadow(
-                          color: Colors.black.withOpacity(0.2),
-                          blurRadius: 8,
-                          offset: Offset(2, 2),
+                  Flexible(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        languageProvider.translate("card_dentales"),
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          shadows: [
+                            Shadow(
+                              color: Colors.black.withOpacity(0.2),
+                              blurRadius: 8,
+                              offset: Offset(2, 2),
+                            ),
+                          ],
                         ),
-                      ],
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis, // 🔥 Opcional
+                      ),
                     ),
                   ),
                   // Espacio para balancear la UI (sin botón de búsqueda aquí)

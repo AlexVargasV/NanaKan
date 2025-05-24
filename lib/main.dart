@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
+import 'dart:async';
 import 'views/splash_screen.dart';
 import 'providers/language_provider.dart';
 import 'providers/theme_provider.dart';
 import 'package:nanakan/providers/notification_service.dart'; //
 
-// Plugin de notificaciones
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
@@ -32,16 +31,22 @@ Future<void> initializeNotifications() async {
   await flutterLocalNotificationsPlugin.initialize(initSettings);
 }
 
+void startNotificationTimer(LanguageProvider langProvider) {
+  Timer.periodic(Duration(minutes: 1), (_) {
+    showRepeatedNotification(langProvider);
+  });
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeNotifications(); // ✅ Inicializa
-  await showRepeatedNotification(); // ✅ Activa repetición cada minuto
-
+  await initializeNotifications();
+  final languageProvider = LanguageProvider();
+  await languageProvider.loadLanguage(); // ✅ Cargar idioma antes de runApp
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => LanguageProvider()..loadLanguage(Locale('es')),
+          create: (_) => LanguageProvider()..loadLanguage(),
         ),
         ChangeNotifierProvider(
           create: (_) => ThemeProvider(),
@@ -57,7 +62,9 @@ class ModernApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final languageProvider = Provider.of<LanguageProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context);
-
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      startNotificationTimer(languageProvider);
+    });
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       locale: languageProvider.locale,

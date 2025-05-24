@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguageProvider extends ChangeNotifier {
   Map<String, dynamic> _localizedData = {};
@@ -8,15 +9,25 @@ class LanguageProvider extends ChangeNotifier {
 
   Locale get locale => _locale;
 
-  Future<void> loadLanguage(Locale locale) async {
+  Future<void> loadLanguage([Locale? locale]) async {
     try {
-      String jsonString = await rootBundle.loadString(
-          'assets/lang/${locale.languageCode}.json'); // 🔹 Cargar archivo de idioma
+      // 🔹 Obtenemos idioma guardado en cache (SharedPreferences)
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? savedLangCode = prefs.getString('selected_language');
+
+      // 🔹 Si hay idioma guardado, lo usamos; si no, usamos el argumento o 'es'
+      String langCode = savedLangCode ?? locale?.languageCode ?? 'es';
+
+      _locale = Locale(langCode);
+
+      // 🔹 Cargamos el archivo JSON correspondiente
+      String jsonString = await rootBundle
+          .loadString('assets/lang/${_locale.languageCode}.json');
       Map<String, dynamic> jsonMap = json.decode(jsonString);
+
       _localizedData =
           jsonMap.map((key, value) => MapEntry(key, value.toString()));
-      _locale = locale;
-      notifyListeners(); // 🔹 Notificar cambios a la UI
+      notifyListeners();
     } catch (e) {
       print("Error al cargar el idioma: $e");
     }
@@ -163,11 +174,29 @@ class LanguageProvider extends ChangeNotifier {
     ];
   }
 
-  /// 🔹 Cambiar idioma y recargar datos correctamente
-  Future<void> changeLanguage(String languageCode) async {
-    if (_locale.languageCode != languageCode) {
-      await loadLanguage(Locale(languageCode));
-      notifyListeners(); // 🔹 Asegura que la UI se actualice con las nuevas traducciones
+  List<Map<String, String>> getNotificationMessages() {
+    List<Map<String, String>> messages = [];
+    int i = 1;
+    while (true) {
+      String titleKey = 'notification_${i}_title';
+      String bodyKey = 'notification_${i}_body';
+      if (_localizedData.containsKey(titleKey) &&
+          _localizedData.containsKey(bodyKey)) {
+        messages.add({
+          'title': _localizedData[titleKey]!,
+          'body': _localizedData[bodyKey]!,
+        });
+        i++;
+      } else {
+        break;
+      }
     }
+    return messages;
+  }
+
+  Future<void> changeLanguage(String languageCode) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('selected_language', languageCode);
+    await loadLanguage(Locale(languageCode)); // Cargar idioma actualizado
   }
 }

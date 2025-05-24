@@ -144,5 +144,102 @@
     "dtest_result_low": "🟢 Excelente salud dental 🦷\n✅ No hay señales de enfermedad periodontal. Sigue con los cuidados preventivos como el cepillado y la alimentación adecuada.",
     "dtest_result_moderate": "🟡 Riesgo moderado ⚠\n🧐 Algunos signos tempranos de enfermedad periodontal. Mejora su higiene y acude al veterinario.",
     "dtest_result_high": "🟠 Necesita atención pronto 🚨\n⚠ Signos moderados de enfermedad periodontal. Requiere limpieza dental veterinaria.",
-    "dtest_result_critical": "🔴 Riesgo crítico 🆘\n🚨 Síntomas severos de enfermedad periodontal. Tu gato necesita ayuda urgente del veterinario."
+    "dtest_result_critical": "🔴 Riesgo crítico 🆘\n🚨 Síntomas severos de enfermedad periodontal. Tu gato necesita ayuda urgente del veterinario.",
+    "app_name": "Nana Kan",
+
+    "notification_1_title": "Cáncer en Gatos",
+    "notification_1_body": "¿Sabías que una costra que no cicatriza puede ser cáncer? Revisa el hocico y orejas de tu gato cada mes.",
+
+    "notification_2_title": "Cálculos Renales",
+    "notification_2_body": "¿Tu gato bebe poca agua? Prueba usar una fuente con movimiento: ¡aman el agua fresca!",
+
+    "notification_3_title": "Enfermedad Dental",
+    "notification_3_body": "El mal aliento no es normal en gatos. Es uno de los primeros signos de enfermedad dental.",
+
+    "notification_4_title": "Cáncer en Gatos",
+    "notification_4_body": "El sol es un enemigo silencioso. Si tu gato tiene orejas blancas, evita que tome sol directo en horas pico.",
+
+    "notification_5_title": "Cálculos Renales",
+    "notification_5_body": "El exceso de croquetas y poca hidratación es la fórmula perfecta para los cálculos. Equilibra su dieta.",
+
+    "notification_6_title": "Enfermedad Dental",
+    "notification_6_body": "Si sus encías se ven rojas o sangran al tocarlas, hay inflamación. Consulta a tiempo.",
+
+    "notification_7_title": "Cáncer en Gatos",
+    "notification_7_body": "Una herida que no mejora tras 15 días merece revisión veterinaria. No esperes más.",
+
+    "notification_8_title": "Cálculos Renales",
+    "notification_8_body": "Si tu gato maúlla al orinar o va muchas veces al arenero, podría tener problemas urinarios.",
+
+    "notification_9_title": "Enfermedad Dental",
+    "notification_9_body": "Introduce el cepillado con paciencia: empieza con toallitas dentales sin sabor.",
+
+    "notification_10_title": "Cáncer en Gatos",
+    "notification_10_body": "El carcinoma es más común en gatos blancos. ¿Tu gato es de alto riesgo? Revísalo con más frecuencia.",
+
+    "notification_11_title": "Cálculos Renales",
+    "notification_11_body": "Los gatos machos castrados tienen más riesgo de cálculos. ¡Obsérvalos con más atención!",
+
+    "notification_12_title": "Enfermedad Dental",
+    "notification_12_body": "Premios dentales ayudan, pero no reemplazan la limpieza. Úsalos como apoyo.",
+
+    "notification_13_title": "Cáncer en Gatos",
+    "notification_13_body": "La nariz de tu gato debe estar limpia y sin costras. Si ves algo raro, tómale una foto y monitorea cambios.",
+
+    "notification_14_title": "Cálculos Renales",
+    "notification_14_body": "¿Sabías que el estrés también afecta la salud urinaria? Dale un ambiente tranquilo.",
+
+    "notification_15_title": "Enfermedad Dental",
+    "notification_15_body": "¿Notas que mastica de un solo lado o deja comida? Puede haber dolor dental.",
+
+    "notification_16_title": "Cáncer en Gatos",
+    "notification_16_body": "Evita camas cerca de ventanas con sol directo: protege a tu gato de la radiación.",
+
+    "notification_17_title": "Cálculos Renales",
+    "notification_17_body": "Cambia el agua de su bebedero al menos dos veces al día. El agua limpia es clave.",
+
+    "notification_18_title": "Enfermedad Dental",
+    "notification_18_body": "La prevención empieza con mirar su boca una vez al mes. Revisa encías y dientes.",
+
+    "notification_19_title": "Cáncer en Gatos",
+    "notification_19_body": "¿Notas un punto negro o rosado que crece? No lo ignores. Podría ser más que una mancha.",
+
+    "notification_20_title": "Cálculos Renales",
+    "notification_20_body": "Agrega comida húmeda sin dejar las croquetas: mejora la hidratación sin perder nutrientes.",
+
+    "notification_21_title": "Enfermedad Dental",
+    "notification_21_body": "Gatos mayores de 7 años necesitan revisión dental anual. El envejecimiento afecta su salud oral.",
+
+    "notification_22_title": "Cáncer en Gatos",
+    "notification_22_body": "Limpia su hocico con toallas húmedas para gatos. Una buena higiene previene irritaciones persistentes.",
+
+    "notification_23_title": "Cálculos Renales",
+    "notification_23_body": "¿Ves manchas rojizas en la arena? Podría ser sangre en la orina. No lo pases por alto.",
+
+    "notification_24_title": "Enfermedad Dental",
+    "notification_24_body": "Evita dar huesos duros o alimentos secos no específicos: pueden dañar sus dientes.",
+
+    "notification_25_title": "Cáncer en Gatos",
+    "notification_25_body": "Si tu gato se rasca mucho la oreja o tiene una herida que sangra fácil, consulta al veterinario.",
+
+    "notification_26_title": "Cálculos Renales",
+    "notification_26_body": "Un segundo arenero en otra zona de la casa puede ayudar a notar cambios en su forma de orinar.",
+
+    "notification_27_title": "Enfermedad Dental",
+    "notification_27_body": "Un gato que babea más de lo normal puede tener dolor dental. Observa y actúa.",
+
+    "notification_28_title": "Cáncer en Gatos",
+    "notification_28_body": "¡La prevención empieza en casa! Una simple revisión al mes puede salvarle la vida.",
+
+    "notification_29_title": "Cálculos Renales",
+    "notification_29_body": "Los cálculos pueden ser silenciosos. Un análisis de orina al año es prevención pura.",
+
+    "notification_30_title": "Enfermedad Dental",
+    "notification_30_body": "¡Recuerda! Un gato con dientes sanos come mejor, juega más y vive más feliz.",
+
+    "notification_permission_title": "Permiso de notificaciones requerido",
+    "notification_permission_desc": "Para mejorar tu experiencia en la aplicación, necesitamos permiso para enviarte notificaciones.",
+    "btn_allow_notifications": "Permitir notificaciones",
+    "btn_skip": "Seguir sin permisos"
+
 }

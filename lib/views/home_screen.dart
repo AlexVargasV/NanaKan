@@ -386,7 +386,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     colorFilter: ColorFilter.mode(
                       Theme.of(context).brightness == Brightness.dark
                           ? Colors.white
-                          : const Color.fromARGB(255, 2, 2, 2),
+                          : const Color.fromARGB(255, 247, 3, 3),
                       BlendMode.srcIn,
                     ),
                   ),

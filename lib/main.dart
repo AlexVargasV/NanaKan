@@ -6,6 +6,7 @@ import 'views/splash_screen.dart';
 import 'providers/language_provider.dart';
 import 'providers/theme_provider.dart';
 import 'package:nanakan/providers/notification_service.dart'; //
+import 'package:timezone/data/latest_all.dart' as tz;
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -31,14 +32,9 @@ Future<void> initializeNotifications() async {
   await flutterLocalNotificationsPlugin.initialize(initSettings);
 }
 
-void startNotificationTimer(LanguageProvider langProvider) {
-  Timer.periodic(Duration(minutes: 1), (_) {
-    showRepeatedNotification(langProvider);
-  });
-}
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  tz.initializeTimeZones();
   await initializeNotifications();
   final languageProvider = LanguageProvider();
   await languageProvider.loadLanguage(); // ✅ Cargar idioma antes de runApp
@@ -63,7 +59,9 @@ class ModernApp extends StatelessWidget {
     final languageProvider = Provider.of<LanguageProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context);
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      startNotificationTimer(languageProvider);
+      // 🔥 Aquí se asegura de que languageProvider ya esté inicializado
+      scheduleDailyNotification(
+          languageProvider); // ✅ Notificación diaria a las 12:00 PM
     });
     return MaterialApp(
       debugShowCheckedModeBanner: false,
